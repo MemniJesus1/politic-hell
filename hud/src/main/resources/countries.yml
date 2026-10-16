@@ -1,0 +1,403 @@
+# Генерируется tools/build_pack.py из data/countries.json — не правь руками.
+none-glyph: "\uE302"
+countries:
+  abi:
+    name: "Абиссиния"
+    glyph: "\uE400"
+    color: "#109030"
+  afg:
+    name: "Афганистан"
+    glyph: "\uE401"
+    color: "#EBEBEB"
+  ahe:
+    name: "Австро-Венгрия"
+    glyph: "\uE402"
+    color: "#D03030"
+  akf:
+    name: "AKF"
+    glyph: "\uE403"
+    color: "#105090"
+  alb:
+    name: "Албания (alb)"
+    glyph: "\uE404"
+    color: "#B01010"
+  albania:
+    name: "Албания"
+    glyph: "\uE405"
+    color: "#D03010"
+  andorra:
+    name: "Андорра"
+    glyph: "\uE406"
+    color: "#D03010"
+  arg:
+    name: "Аргентина"
+    glyph: "\uE407"
+    color: "#70B0D0"
+  arm:
+    name: "Армения"
+    glyph: "\uE408"
+    color: "#1030B0"
+  aus:
+    name: "Австрийская империя"
+    glyph: "\uE409"
+    color: "#F0D010"
+  australia:
+    name: "Австралия"
+    glyph: "\uE40A"
+    color: "#F01030"
+  austria:
+    name: "Австрия"
+    glyph: "\uE40B"
+    color: "#D01030"
+  azb:
+    name: "Азербайджан"
+    glyph: "\uE40C"
+    color: "#F03030"
+  balt:
+    name: "Балтия"
+    glyph: "\uE40D"
+    color: "#EBEBEB"
+  bandera:
+    name: "Красно-чёрный флаг"
+    glyph: "\uE40E"
+    color: "#F01010"
+  bel:
+    name: "Бельгия (bel)"
+    glyph: "\uE40F"
+    color: "#F0D030"
+  belgium:
+    name: "Бельгия"
+    glyph: "\uE410"
+    color: "#F03050"
+  bha:
+    name: "BHA"
+    glyph: "\uE411"
+    color: "#D01010"
+  bhu:
+    name: "Бутан"
+    glyph: "\uE412"
+    color: "#F0D010"
+  bir:
+    name: "Бирма"
+    glyph: "\uE413"
+    color: "#F0D010"
+  blr:
+    name: "Беларусь (бчб)"
+    glyph: "\uE414"
+    color: "#D01010"
+  blrn:
+    name: "Беларусь"
+    glyph: "\uE415"
+    color: "#D01010"
+  boh:
+    name: "Богемия"
+    glyph: "\uE416"
+    color: "#D01010"
+  bol:
+    name: "Боливия"
+    glyph: "\uE417"
+    color: "#F0F010"
+  bosnia:
+    name: "Босния и Герцеговина"
+    glyph: "\uE418"
+    color: "#103090"
+  bra:
+    name: "Бразилия"
+    glyph: "\uE419"
+    color: "#10B050"
+  brs:
+    name: "BRS"
+    glyph: "\uE41A"
+    color: "#D01030"
+  buh:
+    name: "Бухара"
+    glyph: "\uE41B"
+    color: "#109010"
+  bul:
+    name: "Болгария"
+    glyph: "\uE41C"
+    color: "#10B070"
+  can:
+    name: "Канада (can)"
+    glyph: "\uE41D"
+    color: "#B01010"
+  canada:
+    name: "Канада"
+    glyph: "\uE41E"
+    color: "#F01010"
+  che:
+    name: "CHE"
+    glyph: "\uE41F"
+    color: "#307090"
+  chi:
+    name: "CHI"
+    glyph: "\uE420"
+    color: "#F0D030"
+  chil:
+    name: "Чили (chil)"
+    glyph: "\uE421"
+    color: "#D05030"
+  chile:
+    name: "Чили"
+    glyph: "\uE422"
+    color: "#D03010"
+  croatia:
+    name: "Хорватия"
+    glyph: "\uE423"
+    color: "#1010D0"
+  cub:
+    name: "Куба"
+    glyph: "\uE424"
+    color: "#105090"
+  czechia:
+    name: "Чехия"
+    glyph: "\uE425"
+    color: "#D01030"
+  dan:
+    name: "Дания (dan)"
+    glyph: "\uE426"
+    color: "#D01030"
+  den:
+    name: "Дания (den)"
+    glyph: "\uE427"
+    color: "#D03050"
+  denmark:
+    name: "Дания"
+    glyph: "\uE428"
+    color: "#D01030"
+  dom:
+    name: "Доминикана"
+    glyph: "\uE429"
+    color: "#D03050"
+  egi:
+    name: "Египет (egi)"
+    glyph: "\uE42A"
+    color: "#EBEBEB"
+  egypt:
+    name: "Египет"
+    glyph: "\uE42B"
+    color: "#D01030"
+  ekv:
+    name: "Эквадор"
+    glyph: "\uE42C"
+    color: "#F0F010"
+  eng:
+    name: "Англия"
+    glyph: "\uE42D"
+    color: "#D03050"
+  esp:
+    name: "Испания"
+    glyph: "\uE42E"
+    color: "#F0D010"
+  est:
+    name: "Эстония"
+    glyph: "\uE42F"
+    color: "#1070D0"
+  eth:
+    name: "Эфиопия"
+    glyph: "\uE430"
+    color: "#F0F030"
+  fen:
+    name: "FEN"
+    glyph: "\uE431"
+    color: "#F0D010"
+  fin:
+    name: "Финляндия (fin)"
+    glyph: "\uE432"
+    color: "#FFFFFF"
+  finland:
+    name: "Финляндия"
+    glyph: "\uE433"
+    color: "#FFFFFF"
+  fra:
+    name: "Франция"
+    glyph: "\uE434"
+    color: "#FFFFFF"
+  frk:
+    name: "FRK"
+    glyph: "\uE435"
+    color: "#0D0D6A"
+  gai:
+    name: "Гаити"
+    glyph: "\uE436"
+    color: "#0120A0"
+  gal:
+    name: "GAL"
+    glyph: "\uE437"
+    color: "#EE0808"
+  gco:
+    name: "GCO"
+    glyph: "\uE438"
+    color: "#FFFFFF"
+  geo:
+    name: "GEO"
+    glyph: "\uE439"
+    color: "#990000"
+  ger:
+    name: "Германия (имперская)"
+    glyph: "\uE43A"
+    color: "#000000"
+  ger3:
+    name: "Германия"
+    glyph: "\uE43B"
+    color: "#000000"
+  gre:
+    name: "Греция (gre)"
+    glyph: "\uE43C"
+    color: "#2970B8"
+  greece:
+    name: "Греция"
+    glyph: "\uE43D"
+    color: "#0D5EAF"
+  gruz:
+    name: "Грузия"
+    glyph: "\uE43E"
+    color: "#FF0000"
+  gua:
+    name: "Гватемала (gua)"
+    glyph: "\uE43F"
+    color: "#5EA3D6"
+  gva:
+    name: "Гватемала"
+    glyph: "\uE440"
+    color: "#4997CF"
+  hai:
+    name: "HAI"
+    glyph: "\uE441"
+    color: "#1E3AAA"
+  hoi:
+    name: "HOI"
+    glyph: "\uE442"
+    color: "#AE1C29"
+  hol:
+    name: "Нидерланды"
+    glyph: "\uE443"
+    color: "#B83741"
+  hon:
+    name: "Гондурас"
+    glyph: "\uE444"
+    color: "#2952AA"
+  hun:
+    name: "Венгрия (hun)"
+    glyph: "\uE445"
+    color: "#C5051E"
+  hungary:
+    name: "Венгрия"
+    glyph: "\uE446"
+    color: "#FFFFFF"
+  iceland:
+    name: "Исландия"
+    glyph: "\uE447"
+    color: "#02529C"
+  india:
+    name: "Индия"
+    glyph: "\uE448"
+    color: "#FFFFFF"
+  ira:
+    name: "Иран"
+    glyph: "\uE449"
+    color: "#FFFFFF"
+  irl:
+    name: "Ирландия"
+    glyph: "\uE44A"
+    color: "#FFFFFF"
+  israel:
+    name: "Израиль"
+    glyph: "\uE44B"
+    color: "#FFFFFF"
+  ita:
+    name: "Италия"
+    glyph: "\uE44C"
+    color: "#FFFFFF"
+  itr:
+    name: "Италия (itr)"
+    glyph: "\uE44D"
+    color: "#FFFFFF"
+  jap:
+    name: "Япония (jap)"
+    glyph: "\uE44E"
+    color: "#FCFCFC"
+  jpn:
+    name: "Япония"
+    glyph: "\uE44F"
+    color: "#FFFFFF"
+  kirgis:
+    name: "Киргизия"
+    glyph: "\uE450"
+    color: "#FF0000"
+  kit2:
+    name: "Китай"
+    glyph: "\uE451"
+    color: "#CC0000"
+  kol:
+    name: "Колумбия (kol)"
+    glyph: "\uE452"
+    color: "#2163AD"
+  kol2:
+    name: "Колумбия"
+    glyph: "\uE453"
+    color: "#FCD531"
+  kos:
+    name: "KOS"
+    glyph: "\uE454"
+    color: "#1E79CD"
+  kz:
+    name: "Казахстан"
+    glyph: "\uE455"
+    color: "#00ADC3"
+  lat:
+    name: "Латвия"
+    glyph: "\uE456"
+    color: "#9E1D32"
+  lib:
+    name: "Либерия"
+    glyph: "\uE457"
+    color: "#FFFFFF"
+  liechtenstein:
+    name: "Лихтенштейн"
+    glyph: "\uE458"
+    color: "#CE1126"
+  lit:
+    name: "Литва"
+    glyph: "\uE459"
+    color: "#006A42"
+  lux:
+    name: "Люксембург (lux)"
+    glyph: "\uE45A"
+    color: "#F14B56"
+  luxembourg:
+    name: "Люксембург"
+    glyph: "\uE45B"
+    color: "#FFFFFF"
+  lvp:
+    name: "LVP"
+    glyph: "\uE45C"
+    color: "#FFCD21"
+  madagascar:
+    name: "Мадагаскар"
+    glyph: "\uE45D"
+    color: "#FFFFFF"
+  malta:
+    name: "Мальта"
+    glyph: "\uE45E"
+    color: "#CF142B"
+  mex:
+    name: "Мексика"
+    glyph: "\uE45F"
+    color: "#FFFFFF"
+  mia2:
+    name: "Мьянма"
+    glyph: "\uE460"
+    color: "#FFDF00"
+  mold:
+    name: "Молдавия"
+    glyph: "\uE461"
+    color: "#FFD300"
+  mon:
+    name: "Черногория"
+    glyph: "\uE462"
+    color: "#DC171C"
+  monaco:
+    name: "Монако"
+    glyph: "\uE463"
+    color: "#D01C1F"

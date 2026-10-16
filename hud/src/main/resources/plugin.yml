@@ -1,0 +1,109 @@
+name: PoliticHellHUD
+version: '${project.version}'
+main: com.politichell.hud.PoliticHellHud
+api-version: '1.21'
+softdepend: [TAB, PlaceholderAPI, Vault, PlayerPoints, PlasmoVoice, Towny, SiegeWar, LuckPerms, Essentials, NMinimap]
+author: PoliticHell
+description: Money HUD (2 currencies) above the hearts, drawn via resource-pack font.
+
+commands:
+  hud:
+    description: Toggle the money HUD
+    usage: /hud [on|off]
+    permission: politichellhud.use
+  hudbalance:
+    description: Show your balances (coins + donate). /balance belongs to the Vault economy plugin
+    aliases: [hbal]
+    permission: politichellhud.use
+  hudeco:
+    description: Admin economy commands (coins via Vault, donate via PlayerPoints/file)
+    usage: /hudeco <give|take|set|get> <player> <coins|donate> [amount]
+    permission: politichellhud.admin
+  country:
+    description: Choose / show country (beta stub until Towny)
+    usage: /country list | set <id> [player] | clear [player]
+    permission: politichellhud.use
+  hudvoice:
+    description: Manual voice indicator (until Plasmo Voice is hooked)
+    usage: /hudvoice <player> <on|off>
+    permission: politichellhud.admin
+  afk:
+    description: Toggle AFK manually
+    permission: politichellhud.use
+  hudrank:
+    description: Force a rank badge for a player (testing / without LuckPerms)
+    usage: /hudrank <player> <rank|auto>
+    permission: politichellhud.admin
+  hudtest:
+    description: Show every pack icon in chat (squares = wrong/old resource pack)
+    permission: politichellhud.use
+  sbstyle:
+    description: Scoreboard style - full (with labels) or compact (icons)
+    usage: /sbstyle [full|compact|toggle]
+    aliases: [sbs]
+    permission: politichellhud.use
+  tabstyle:
+    description: TAB header style - pillars, panel or min
+    usage: /tabstyle [pillars|panel|min]
+    aliases: [tabs]
+    permission: politichellhud.use
+  hudrel:
+    description: War/alliance between countries (stub until Towny)
+    usage: /hudrel <war|ally|union|peace|list> <country1> <country2>
+    permission: politichellhud.admin
+  hudnpc:
+    description: Test NPCs to preview nametag design
+    usage: /hudnpc demo | spawn ... | clear
+    permission: politichellhud.admin
+  compass:
+    description: Toggle the compass bossbar
+    usage: /compass [on|off]
+    permission: politichellhud.use
+  waypoint:
+    description: Personal compass waypoints
+    usage: /waypoint add <name> [icon] | del <name> | list | clear
+    aliases: [wp]
+    permission: politichellhud.use
+  map:
+    description: Fullscreen map (F) and minimap settings
+    usage: /map [help|mini|side|style|zoom|radar|frame]
+    aliases: [fullmap, gmap]
+    permission: politichellhud.map
+  hudpoi:
+    description: Shared compass points (admin)
+    usage: /hudpoi add <id> <icon> [name...] | del <id> | list
+    permission: politichellhud.admin
+  hudpack:
+    description: Re-send the current resource pack (built into the plugin) to everyone
+    permission: politichellhud.admin
+  hudupdate:
+    description: Update everything to the current version - resource pack, TAB configs (backup first)
+    usage: /hudupdate [all|pack|tab|configs]
+    permission: politichellhud.admin
+  hudreload:
+    description: Reload HUD config
+    permission: politichellhud.admin
+  card:
+    description: Item cards - give / edit / list / reload
+    usage: /card give|list|info|set|add|clear|save|export|expire|unexpire|strip|refresh|reload
+    permission: politichellhud.admin
+  phh:
+    description: Admin panel - settings, item cards, status
+    usage: /phh [предмет|настройки|возможности|каталог|состояние]
+    aliases: [hudmenu, hudpanel]
+    permission: politichellhud.admin
+  tip:
+    description: Toggle item card mode - brief / detailed
+    permission: politichellhud.use
+
+permissions:
+  politichellhud.cards.bypass:
+    description: Ability to use /card bypass (ignore item binding rules). Not given to anybody by default, even ops
+    default: false
+  politichellhud.use:
+    default: true
+  politichellhud.map:
+    description: Fullscreen map (F)
+    default: true
+  politichellhud.admin:
+    default: op

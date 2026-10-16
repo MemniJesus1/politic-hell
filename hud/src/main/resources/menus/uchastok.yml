@@ -1,0 +1,241 @@
+# Меню участка (/uchastok). Команды /plot ... из Towny.
+menu_title: '&8» &x&f&f&f&1&c&1&lУ&x&f&f&d&a&7&a&lч&x&f&f&c&2&3&3&lа&x&f&f&8&a&1&e&lс&x&f&7&7&1&2&2&lт&x&f&0&5&9&2&6&lо&x&e&8&4&0&2&a&lк'
+size: 45
+open_command:
+- uchastok
+- uchastki
+register_command: true
+update_interval: 20
+items:
+  info:
+    material: OAK_SIGN
+    slot: 4
+    display_name: '&x&f&f&f&1&c&1&lУ&x&f&f&e&b&a&f&lч&x&f&f&e&5&9&e&lа&x&f&f&d&f&8&c&lс&x&f&f&d&a&7&a&lт&x&f&f&d&4&6&8&lо&x&f&f&c&e&5&6&lк &x&f&f&c&2&3&3&lп&x&f&f&8&a&1&e&lо&x&f&c&8&1&2&0&lд &x&f&6&6&e&2&2&lн&x&f&4&6&5&2&4&lо&x&f&1&5&c&2&6&lг&x&e&e&5&2&2&7&lа&x&e&b&4&9&2&8&lм&x&e&8&4&0&2&a&lи'
+    lore:
+    - '&8· &7Место: &f%townyadvanced_player_location_town_or_wildname%'
+    - '&8· &7Тип: &f%townyadvanced_player_plot_type%'
+    - ''
+    - '&6» &7ЛКМ &8— &fподробная справка в чате'
+    left_click_commands:
+    - '[player] plot'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  claim:
+    material: GRASS_BLOCK
+    slot: 10
+    display_name: '&x&d&4&f&8&b&0&lК&x&c&0&f&3&a&5&lу&x&a&c&e&e&9&a&lп&x&9&8&e&a&8&f&lи&x&8&3&e&5&8&4&lт&x&6&f&e&0&7&9&lь &x&1&d&b&3&8&c&l/ &x&1&9&a&3&8&a&lз&x&1&7&9&b&8&9&lа&x&1&4&9&4&8&9&lн&x&1&2&8&c&8&8&lя&x&1&0&8&4&8&7&lт&x&0&e&7&c&8&6&lь'
+    lore:
+    - '&7Участок станет твоим, если он продаётся'
+    - '&7или принадлежит городу и ты житель.'
+    - ''
+    - '&6» &7ЛКМ &8— &fкупить этот участок'
+    left_click_commands:
+    - '[player] plot claim'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  unclaim:
+    material: DIRT
+    slot: 11
+    display_name: '&x&f&f&c&9&b&8&lО&x&f&f&b&3&9&e&lт&x&f&f&9&c&8&4&lк&x&f&f&8&6&6&a&lа&x&f&f&7&0&5&0&lз&x&e&8&2&8&3&c&lа&x&d&2&2&2&3&9&lт&x&b&b&1&c&3&6&lь&x&a&4&1&6&3&3&lс&x&8&e&1&0&3&0&lя'
+    lore:
+    - '&7Возвращает участок городу.'
+    - '&7Деньги за него не возвращаются.'
+    - ''
+    - '&6» &7ЛКМ &8— &fвернуть городу'
+    left_click_commands:
+    - '[player] plot unclaim'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  forsale:
+    material: EMERALD
+    slot: 12
+    display_name: '&x&d&4&f&8&b&0&lП&x&9&8&e&a&8&f&lр&x&5&b&d&b&6&e&lо&x&1&d&b&3&8&c&lд&x&1&8&a&1&8&a&lа&x&1&3&8&e&8&8&lт&x&0&e&7&c&8&6&lь'
+    lore:
+    - '&7Выставляет твой участок на продажу.'
+    - '&7Купит любой, кто стоит рядом.'
+    - '&8&m                         '
+    - '&8· &7Цена: &fвпишешь после клика'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести цену'
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши цену: <click:suggest_command:''/plot forsale ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  notforsale:
+    material: BARRIER
+    slot: 13
+    display_name: '&x&f&f&f&f&f&f&lС&x&f&a&f&a&f&a&lн&x&f&6&f&6&f&6&lя&x&f&2&f&2&f&2&lт&x&e&d&e&d&e&d&lь &x&e&4&e&4&e&4&lс &x&a&e&a&e&a&e&lп&x&a&8&a&8&a&8&lр&x&a&2&a&2&a&2&lо&x&9&c&9&c&9&c&lд&x&9&6&9&6&9&6&lа&x&9&0&9&0&9&0&lж&x&8&a&8&a&8&a&lи'
+    lore:
+    - '&7Участок больше не продаётся.'
+    - ''
+    - '&6» &7ЛКМ &8— &fснять'
+    left_click_commands:
+    - '[player] plot notforsale'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  perm:
+    material: BOOK
+    slot: 14
+    display_name: '&x&f&f&f&f&f&f&lП&x&e&4&e&4&e&4&lр&x&b&4&b&4&b&4&lа&x&9&f&9&f&9&f&lв&x&8&a&8&a&8&a&lа'
+    lore:
+    - '&7Кто что может на участке:'
+    - '&7строить, ломать, открывать, использовать.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать права'
+    left_click_commands:
+    - '[player] plot perm'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  friend:
+    material: PLAYER_HEAD
+    slot: 19
+    display_name: '&x&c&6&e&e&f&f&lД&x&b&3&e&7&f&e&lо&x&a&0&e&0&f&c&lб&x&8&e&d&a&f&b&lа&x&7&b&d&3&f&a&lв&x&6&8&c&c&f&8&lи&x&5&5&c&5&f&7&lт&x&3&b&8&2&f&6&lь &x&4&b&7&0&e&f&lд&x&5&2&6&7&e&b&lр&x&5&a&5&e&e&7&lу&x&6&2&5&5&e&4&lг&x&6&a&4&c&e&0&lа'
+    lore:
+    - '&7Друг строит и ломает на твоём участке'
+    - '&7так же, как ты сам.'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести ник'
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши ник: <click:suggest_command:''/plot friend add ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  unfriend:
+    material: SKELETON_SKULL
+    slot: 20
+    display_name: '&x&f&f&c&9&b&8&lУ&x&f&f&b&7&a&3&lб&x&f&f&a&5&8&e&lр&x&f&f&9&4&7&a&lа&x&f&f&8&2&6&5&lт&x&f&f&7&0&5&0&lь &x&d&6&2&3&3&a&lд&x&c&4&1&e&3&7&lр&x&b&2&1&a&3&5&lу&x&a&0&1&5&3&2&lг&x&8&e&1&0&3&0&lа'
+    lore:
+    - '&7Друг теряет права на участке.'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести ник'
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши ник: <click:suggest_command:''/plot friend remove ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  type:
+    material: NAME_TAG
+    slot: 21
+    display_name: '&x&f&f&f&1&c&1&lТ&x&f&f&e&5&9&e&lи&x&f&f&d&a&7&a&lп &x&f&f&c&2&3&3&lу&x&f&f&8&a&1&e&lч&x&f&a&7&b&2&0&lа&x&f&6&6&c&2&3&lс&x&f&1&5&e&2&5&lт&x&e&d&4&f&2&8&lк&x&e&8&4&0&2&a&lа'
+    lore:
+    - '&7Тип задаёт назначение: дом, магазин, ферма,'
+    - '&7посольство, арена, тюрьма.'
+    - '&7Доступные типы зависят от настроек Towny.'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести тип'
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши тип (например: shop): <click:suggest_command:''/plot set ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  pvp:
+    material: IRON_SWORD
+    slot: 28
+    display_name: '&x&f&f&f&f&f&f&lП&x&b&4&b&4&b&4&lв&x&8&a&8&a&8&a&lП'
+    lore:
+    - '&7Можно ли драться на этом участке.'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    left_click_commands:
+    - '[player] plot toggle pvp'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  mobs:
+    material: ZOMBIE_HEAD
+    slot: 29
+    display_name: '&x&f&f&f&f&f&f&lМ&x&e&4&e&4&e&4&lо&x&b&4&b&4&b&4&lб&x&8&a&8&a&8&a&lы'
+    lore:
+    - '&7Появляются ли монстры на этом участке.'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    left_click_commands:
+    - '[player] plot toggle mobs'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  fire:
+    material: FLINT_AND_STEEL
+    slot: 30
+    display_name: '&x&f&f&f&f&f&f&lО&x&e&4&e&4&e&4&lг&x&b&4&b&4&b&4&lо&x&9&f&9&f&9&f&lн&x&8&a&8&a&8&a&lь'
+    lore:
+    - '&7Распространяется ли огонь по участку.'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    left_click_commands:
+    - '[player] plot toggle fire'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  exp:
+    material: TNT
+    slot: 31
+    display_name: '&x&f&f&f&f&f&f&lВ&x&f&2&f&2&f&2&lз&x&e&4&e&4&e&4&lр&x&b&4&b&4&b&4&lы&x&9&f&9&f&9&f&lв&x&8&a&8&a&8&a&lы'
+    lore:
+    - '&7Ломают ли взрывы постройки на участке.'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    left_click_commands:
+    - '[player] plot toggle explosion'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  back:
+    material: ARROW
+    slot: 36
+    display_name: '&x&f&f&f&f&f&f&lН&x&e&4&e&4&e&4&lа&x&b&4&b&4&b&4&lз&x&9&f&9&f&9&f&lа&x&8&a&8&a&8&a&lд'
+    lore:
+    - '&7Вернуться в главное меню.'
+    left_click_commands:
+    - '[openguimenu] menu'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  close:
+    material: BARRIER
+    slot: 40
+    display_name: '&x&f&f&c&9&b&8&lЗ&x&f&f&9&c&8&4&lа&x&f&f&7&0&5&0&lк&x&e&8&2&8&3&c&lр&x&c&a&2&0&3&8&lы&x&a&c&1&8&3&4&lт&x&8&e&1&0&3&0&lь'
+    lore:
+    - '&7Закрыть это окно.'
+    left_click_commands:
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  _fon:
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 15
+    - 16
+    - 17
+    - 18
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 32
+    - 33
+    - 34
+    - 35
+    - 37
+    - 38
+    - 39
+    - 41
+    - 42
+    - 43
+    - 44
+    priority: 9
+    item_flags:
+    - HIDE_ATTRIBUTES

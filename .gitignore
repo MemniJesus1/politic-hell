@@ -1,0 +1,23 @@
+# сборки и мусор
+target/
+bin/
+*.log
+_work/
+.idea/
+.vscode/
+
+# гигабайты сервера НЕ храним в git — они едут pack-архивом на облако
+world*/
+logs/
+cache/
+crash-reports/
+versions/
+libraries/
+usercache.json
+ops.json
+banned-players.json
+banned-ips.json
+whitelist.json
+*.bak*
+*.disabled
+desktop.ini

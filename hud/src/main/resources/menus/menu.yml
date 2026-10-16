@@ -1,0 +1,262 @@
+# Главное меню PoliticHell (/menu). Файл создан tools/gen_menus.py — правь свободно, твои правки сохраняются в plugins/PoliticHellHUD/backup при /hudupdate меню.
+# Цвета названий — градиент &x&R&R&G&G&B&B (генерирует gen_menus.py). Заглушки «скоро»: когда поставишь плагин, замени строки [message] у кнопки на нужную команду, например '[player] qs' и убери [скоро].
+menu_title: '&f &8— меню'
+size: 45
+open_command:
+- menu
+- pmenu
+register_command: true
+update_interval: 20
+items:
+  me:
+    material: head-%phhud_name%
+    slot: 4
+    display_name: '&f&l%phhud_name% &8» %phhud_rank% &7%phhud_rank_label%'
+    lore:
+    - '&7Твой профиль. Страна и город берутся из Towny:'
+    - '&7создай город — и он станет твоей страной.'
+    - '&8&m                         '
+    - '&f &7Страна: &f%phhud_country%'
+    - '&f &7Город: &f%phhud_town%'
+    - '&f &7Роль: &f%phhud_role%'
+    - '&8&m                         '
+    - '&f &7Монеты: &e%phhud_coins_formatted%'
+    - '&f &7Донат: &d%phhud_donate_formatted%'
+    - ''
+    - '&8Монеты — игровая валюта. Донат — внутренние очки.'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  town:
+    material: GRASS_BLOCK
+    slot: 20
+    display_name: '&x&d&4&f&8&b&0&lГ&x&5&b&d&b&6&e&lо&x&1&d&b&3&8&c&lр&x&1&6&9&8&8&9&lо&x&0&e&7&c&8&6&lд'
+    lore:
+    - '&7Твоя община: жители, земля, казна.'
+    - '&7Здесь создают город, занимают участки, собирают налоги'
+    - '&7и настраивают правила (пвп, мобы, огонь).'
+    - ''
+    - '&6» &7ЛКМ &8— &fоткрыть управление городом'
+    left_click_commands:
+    - '[openguimenu] gorod'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  nation:
+    material: WHITE_BANNER
+    slot: 22
+    display_name: '&x&c&6&e&e&f&f&lС&x&8&e&d&a&f&b&lт&x&5&5&c&5&f&7&lр&x&3&b&8&2&f&6&lа&x&5&2&6&7&e&b&lн&x&6&a&4&c&e&0&lа'
+    lore:
+    - '&7Союз городов под одним флагом.'
+    - '&7Общая казна, союзники и враги, дипломатия.'
+    - '&7Название страны видно над ником и в списке игроков.'
+    - ''
+    - '&6» &7ЛКМ &8— &fоткрыть управление страной'
+    left_click_commands:
+    - '[openguimenu] strana'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  plot:
+    material: OAK_SIGN
+    slot: 24
+    display_name: '&x&f&f&f&1&c&1&lУ&x&f&f&d&a&7&a&lч&x&f&f&c&2&3&3&lа&x&f&f&8&a&1&e&lс&x&f&7&7&1&2&2&lт&x&f&0&5&9&2&6&lо&x&e&8&4&0&2&a&lк'
+    lore:
+    - '&7Один чанк, на котором ты стоишь.'
+    - '&7Купить или продать землю, дать права друзьям,'
+    - '&7выбрать тип: дом, магазин, ферма, посольство.'
+    - ''
+    - '&6» &7ЛКМ &8— &fоткрыть управление участком'
+    left_click_commands:
+    - '[openguimenu] uchastok'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  spawn:
+    material: RED_BED
+    slot: 29
+    display_name: '&x&f&f&f&f&f&f&lС&x&e&4&e&4&e&4&lп&x&b&4&b&4&b&4&lа&x&9&f&9&f&9&f&lв&x&8&a&8&a&8&a&lн'
+    lore:
+    - '&7Телепорт в стартовую точку сервера,'
+    - '&7где скупщик, торговцы и аукцион.'
+    - ''
+    - '&6» &7ЛКМ &8— &fотправиться на спавн'
+    left_click_commands:
+    - '[player] spawn'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  rtp:
+    material: COMPASS
+    slot: 30
+    display_name: '&x&f&f&f&f&f&f&lС&x&f&a&f&a&f&a&lл&x&f&6&f&6&f&6&lу&x&f&2&f&2&f&2&lч&x&e&d&e&d&e&d&lа&x&e&8&e&8&e&8&lй&x&e&4&e&4&e&4&lн&x&b&4&b&4&b&4&lа&x&a&e&a&e&a&e&lя &x&a&2&a&2&a&2&lт&x&9&c&9&c&9&c&lо&x&9&6&9&6&9&6&lч&x&9&0&9&0&9&0&lк&x&8&a&8&a&8&a&lа'
+    lore:
+    - '&7Забрасывает в случайное место на карте.'
+    - '&7Так ты найдёшь свободные земли для города.'
+    - '&7Работает через EssentialsX (/tpr).'
+    - ''
+    - '&6» &7ЛКМ &8— &fтелепортироваться'
+    left_click_commands:
+    - '[player] tpr'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  map:
+    material: FILLED_MAP
+    slot: 31
+    display_name: '&x&f&f&f&f&f&f&lК&x&f&a&f&a&f&a&lа&x&f&4&f&4&f&4&lр&x&e&f&e&f&e&f&lт&x&e&9&e&9&e&9&lа &x&b&4&b&4&b&4&lг&x&a&d&a&d&a&d&lо&x&a&6&a&6&a&6&lр&x&9&f&9&f&9&f&lо&x&9&8&9&8&9&8&lд&x&9&1&9&1&9&1&lо&x&8&a&8&a&8&a&lв'
+    lore:
+    - '&7Покажет в чате участки Towny вокруг тебя:'
+    - '&7чьи города рядом и где ничейная земля.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать карту'
+    left_click_commands:
+    - '[player] towny map'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  shop:
+    material: EMERALD
+    slot: 32
+    display_name: '&x&d&4&f&8&b&0&lМ&x&9&8&e&a&8&f&lа&x&5&b&d&b&6&e&lг&x&1&d&b&3&8&c&lа&x&1&8&a&1&8&a&lз&x&1&3&8&e&8&8&lи&x&0&e&7&c&8&6&lн &8[скоро]'
+    lore:
+    - '&7Скупщик ресурсов и торговцы на спавне.'
+    - '&7Продай добычу — получи монеты.'
+    - '&8&m                         '
+    - '&8· &7Закроет плагин: &fQuickShop-Hikari, ShopGUI+ или EconomyShopGUI'
+    - ''
+    - '&8Пока не подключено — нажми, чтобы узнать, как включить'
+    left_click_commands:
+    - '[message] &7Магазин ещё не подключён. Поставь плагин магазина (см. Документацию) и замени команду кнопки в menus/menu.yml.'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  auction:
+    material: GOLD_INGOT
+    slot: 33
+    display_name: '&x&f&f&f&1&c&1&lА&x&f&f&d&a&7&a&lу&x&f&f&c&2&3&3&lк&x&f&f&8&a&1&e&lц&x&f&7&7&1&2&2&lи&x&f&0&5&9&2&6&lо&x&e&8&4&0&2&a&lн &8[скоро]'
+    lore:
+    - '&7Игроки сами продают друг другу вещи'
+    - '&7и выставляют цену.'
+    - '&8&m                         '
+    - '&8· &7Закроет плагин: &fzAuctionHouse или AuctionHouse'
+    - ''
+    - '&8Пока не подключено — нажми, чтобы узнать, как включить'
+    left_click_commands:
+    - '[message] &7Аукцион ещё не подключён (см. Документацию).'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  skills:
+    material: EXPERIENCE_BOTTLE
+    slot: 38
+    display_name: '&x&e&b&d&4&f&f&lП&x&d&d&b&9&f&e&lр&x&c&e&9&f&f&d&lо&x&c&0&8&4&f&c&lк&x&8&b&5&c&f&6&lа&x&7&b&5&2&e&9&lч&x&6&b&4&9&d&d&lк&x&5&b&3&f&d&0&lа &8[скоро]'
+    lore:
+    - '&7Ветки навыков: шахтёр, воин, строитель.'
+    - '&7Чем больше делаешь — тем сильнее становишься.'
+    - '&8&m                         '
+    - '&8· &7Закроет плагин: &fAuraSkills или Jobs Reborn'
+    - ''
+    - '&8Пока не подключено — нажми, чтобы узнать, как включить'
+    left_click_commands:
+    - '[message] &7Прокачка ещё не подключена (см. Документацию).'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  build:
+    material: CRAFTING_TABLE
+    slot: 39
+    display_name: '&x&f&f&f&1&c&1&lЧ&x&f&f&e&a&a&d&lе&x&f&f&e&4&9&8&lр&x&f&f&d&d&8&4&lт&x&f&f&d&6&7&0&lе&x&f&f&c&f&5&c&lж&x&f&f&c&9&4&7&lи &x&f&f&8&a&1&e&lи &x&f&8&7&5&2&1&lз&x&f&5&6&a&2&3&lа&x&f&2&6&0&2&5&lв&x&e&f&5&5&2&7&lо&x&e&b&4&b&2&8&lд&x&e&8&4&0&2&a&lы &8[скоро]'
+    lore:
+    - '&7Готовые здания по эпохам: ставятся одним кликом'
+    - '&7за ресурсы и монеты.'
+    - '&8&m                         '
+    - '&8· &7Закроет плагин: &fWorldEdit (нужна Java 25) + схемы построек'
+    - ''
+    - '&8Пока не подключено — нажми, чтобы узнать, как включить'
+    left_click_commands:
+    - '[message] &7Чертежи ещё не подключены (см. Документацию).'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  sb:
+    material: PAINTING
+    slot: 41
+    display_name: '&x&f&f&f&f&f&f&lВ&x&f&8&f&8&f&8&lи&x&f&2&f&2&f&2&lд &x&e&4&e&4&e&4&lп&x&b&4&b&4&b&4&lа&x&a&a&a&a&a&a&lн&x&9&f&9&f&9&f&lе&x&9&4&9&4&9&4&lл&x&8&a&8&a&8&a&lи'
+    lore:
+    - '&7Правая панель бывает двух видов:'
+    - '&7полная — с подписями, компактная — только иконки.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпереключить вид'
+    left_click_commands:
+    - '[player] sbstyle toggle'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  sboff:
+    material: ITEM_FRAME
+    slot: 42
+    display_name: '&x&f&f&f&f&f&f&lП&x&f&a&f&a&f&a&lа&x&f&6&f&6&f&6&lн&x&f&2&f&2&f&2&lе&x&e&d&e&d&e&d&lл&x&e&8&e&8&e&8&lь&x&e&4&e&4&e&4&l: &x&a&d&a&d&a&d&lс&x&a&6&a&6&a&6&lк&x&9&f&9&f&9&f&lр&x&9&8&9&8&9&8&lы&x&9&1&9&1&9&1&lт&x&8&a&8&a&8&a&lь'
+    lore:
+    - '&7Убирает или возвращает панель справа,'
+    - '&7если она мешает обзору.'
+    - ''
+    - '&8То же делает команда /sb'
+    - ''
+    - '&6» &7ЛКМ &8— &fскрыть / показать'
+    left_click_commands:
+    - '[player] sb'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  afk:
+    material: CLOCK
+    slot: 43
+    display_name: '&x&f&f&f&f&f&f&lО&x&f&a&f&a&f&a&lт&x&f&4&f&4&f&4&lо&x&e&f&e&f&e&f&lй&x&e&9&e&9&e&9&lт&x&e&4&e&4&e&4&lи &x&a&c&a&c&a&c&l(&x&a&3&a&3&a&3&lA&x&9&b&9&b&9&b&lF&x&9&2&9&2&9&2&lK&x&8&a&8&a&8&a&l)'
+    lore:
+    - '&7Ставит над ником значок Zzz — все видят, что ты отошёл.'
+    - '&7С сервера за простой не выкинет.'
+    - ''
+    - '&6» &7ЛКМ &8— &fотметиться как AFK'
+    left_click_commands:
+    - '[player] afk'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  close:
+    material: BARRIER
+    slot: 40
+    display_name: '&x&f&f&c&9&b&8&lЗ&x&f&f&9&c&8&4&lа&x&f&f&7&0&5&0&lк&x&e&8&2&8&3&c&lр&x&c&a&2&0&3&8&lы&x&a&c&1&8&3&4&lт&x&8&e&1&0&3&0&lь'
+    lore:
+    - '&7Закрыть это окно.'
+    left_click_commands:
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  _fon:
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 21
+    - 23
+    - 25
+    - 26
+    - 27
+    - 28
+    - 34
+    - 35
+    - 36
+    - 37
+    - 44
+    priority: 9
+    item_flags:
+    - HIDE_ATTRIBUTES

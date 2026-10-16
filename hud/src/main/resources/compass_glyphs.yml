@@ -1,0 +1,62 @@
+# Генерируется tools/build_pack.py — ширины глифов компаса (px). Не править.
+ascent: -2
+levels: 7
+alpha: [1.0, 0.82, 0.64, 0.46, 0.3, 0.16, 0.08]
+glyphs:
+  tick_s:
+    char: "\uE500"
+    width: 1
+  tick_m:
+    char: "\uE501"
+    width: 1
+  center:
+    char: "\uE502"
+    width: 1
+  card_N:
+    char: "\uE503"
+    width: 5
+  card_E:
+    char: "\uE504"
+    width: 5
+  card_S:
+    char: "\uE505"
+    width: 5
+  card_W:
+    char: "\uE506"
+    width: 5
+  inter_NE:
+    char: "\uE507"
+    width: 8
+  inter_SE:
+    char: "\uE508"
+    width: 7
+  inter_SW:
+    char: "\uE509"
+    width: 9
+  inter_NW:
+    char: "\uE50A"
+    width: 10
+  poi_wp:
+    char: "\uE510"
+    width: 7
+  poi_star:
+    char: "\uE511"
+    width: 7
+  poi_home:
+    char: "\uE512"
+    width: 7
+  poi_spawn:
+    char: "\uE513"
+    width: 7
+  poi_death:
+    char: "\uE514"
+    width: 7
+  poi_town:
+    char: "\uE515"
+    width: 7
+  poi_war:
+    char: "\uE516"
+    width: 7
+  poi_crown:
+    char: "\uE517"
+    width: 7

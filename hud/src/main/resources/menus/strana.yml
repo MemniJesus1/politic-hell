@@ -1,0 +1,602 @@
+# Меню страны/нации (/strana). Нация Towny; управление — король. Название нации = название страны в таб/скорборде/над ником.
+menu_title: '&8» &x&c&6&e&e&f&f&lС&x&8&e&d&a&f&b&lт&x&5&5&c&5&f&7&lр&x&3&b&8&2&f&6&lа&x&5&2&6&7&e&b&lн&x&6&a&4&c&e&0&lа'
+size: 54
+open_command:
+- strana
+- nat
+register_command: true
+update_interval: 20
+items:
+  newn:
+    material: EMERALD_BLOCK
+    slot: 22
+    display_name: '&x&d&4&f&8&b&0&lС&x&c&0&f&3&a&5&lо&x&a&c&e&e&9&a&lз&x&9&8&e&a&8&f&lд&x&8&3&e&5&8&4&lа&x&6&f&e&0&7&9&lт&x&5&b&d&b&6&e&lь &x&1&a&a&a&8&b&lс&x&1&8&a&1&8&a&lт&x&1&6&9&8&8&9&lр&x&1&3&8&e&8&8&lа&x&1&0&8&5&8&7&lн&x&0&e&7&c&8&6&lу'
+    lore:
+    - '&7Объединяет города под общим флагом.'
+    - '&7Твой город станет столицей, а название нации —'
+    - '&7названием страны над ником и в списке игроков.'
+    - '&8&m                         '
+    - '&8· &7Название: &fвпишешь после клика'
+    - ''
+    - '&8Создаёт мэр города'
+    - ''
+    - '&6» &7ЛКМ &8— &fпридумать название'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'false'
+        r2:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши название страны: <click:suggest_command:''/n new ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+    priority: 1
+  nonation:
+    material: BARRIER
+    slot: 22
+    display_name: '&x&f&f&c&9&b&8&lС&x&f&f&b&e&a&b&lн&x&f&f&b&3&9&e&lа&x&f&f&a&8&9&1&lч&x&f&f&9&c&8&4&lа&x&f&f&9&1&7&7&lл&x&f&f&8&6&6&a&lа &x&f&f&7&0&5&0&lн&x&e&8&2&8&3&c&lу&x&d&e&2&5&3&b&lж&x&d&4&2&3&3&9&lе&x&c&a&2&0&3&8&lн &x&b&6&1&b&3&5&lг&x&a&c&1&8&3&4&lо&x&a&2&1&5&3&3&lр&x&9&8&1&3&3&1&lо&x&8&e&1&0&3&0&lд'
+    lore:
+    - '&7Страну создают поверх города.'
+    - '&7Открой меню «Город» и создай свой.'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'false'
+    priority: 2
+    item_flags:
+    - HIDE_ATTRIBUTES
+  nonation2:
+    material: GRAY_DYE
+    slot: 22
+    display_name: '&x&f&f&f&f&f&f&lГ&x&f&b&f&b&f&b&lо&x&f&7&f&7&f&7&lр&x&f&3&f&3&f&3&lо&x&f&0&f&0&f&0&lд &x&e&8&e&8&e&8&lб&x&e&4&e&4&e&4&lе&x&b&4&b&4&b&4&lз &x&a&8&a&8&a&8&lс&x&a&2&a&2&a&2&lт&x&9&c&9&c&9&c&lр&x&9&6&9&6&9&6&lа&x&9&0&9&0&9&0&lн&x&8&a&8&a&8&a&lы'
+    lore:
+    - '&7Мэр может основать свою страну'
+    - '&7или принять приглашение чужой.'
+    - ''
+    - '&6» &7ЛКМ &8— &fоткрыть приглашения'
+    priority: 3
+    left_click_commands:
+    - '[player] invite list'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  info:
+    material: WHITE_BANNER
+    slot: 4
+    display_name: '&x&c&6&e&e&f&f&lС&x&8&e&d&a&f&b&lт&x&5&5&c&5&f&7&lр&x&3&b&8&2&f&6&lа&x&5&2&6&7&e&b&lн&x&6&a&4&c&e&0&lа &8» &f%townyadvanced_nation%'
+    lore:
+    - '&8· &7Король: &f%townyadvanced_nation_king%'
+    - '&8· &7Столица: &f%townyadvanced_nation_capital%'
+    - '&8· &7Жители: &f%townyadvanced_nation_residents_online% &7онлайн из &f%townyadvanced_nation_residents_amount%'
+    - '&8&m                         '
+    - '&8· &7Казна: &e%townyadvanced_nation_balance%'
+    - ''
+    - '&6» &7ЛКМ &8— &fподробная справка в чате'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+    left_click_commands:
+    - '[player] n'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  spawn:
+    material: RED_BED
+    slot: 10
+    display_name: '&x&f&f&f&f&f&f&lВ &x&e&d&e&d&e&d&lс&x&e&4&e&4&e&4&lт&x&b&4&b&4&b&4&lо&x&a&a&a&a&a&a&lл&x&9&f&9&f&9&f&lи&x&9&4&9&4&9&4&lц&x&8&a&8&a&8&a&lу'
+    lore:
+    - '&7Телепорт в столицу страны.'
+    - ''
+    - '&6» &7ЛКМ &8— &fотправиться'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+    left_click_commands:
+    - '[player] n spawn'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  online:
+    material: PLAYER_HEAD
+    slot: 11
+    display_name: '&x&f&f&f&f&f&f&lК&x&f&8&f&8&f&8&lт&x&f&2&f&2&f&2&lо &x&e&4&e&4&e&4&lо&x&b&4&b&4&b&4&lн&x&a&a&a&a&a&a&lл&x&9&f&9&f&9&f&lа&x&9&4&9&4&9&4&lй&x&8&a&8&a&8&a&lн'
+    lore:
+    - '&7Граждане страны, которые сейчас в игре.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+    left_click_commands:
+    - '[player] n online'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  towns:
+    material: GRASS_BLOCK
+    slot: 12
+    display_name: '&x&f&f&f&f&f&f&lГ&x&f&a&f&a&f&a&lо&x&f&4&f&4&f&4&lр&x&e&f&e&f&e&f&lо&x&e&9&e&9&e&9&lд&x&e&4&e&4&e&4&lа &x&a&d&a&d&a&d&lс&x&a&6&a&6&a&6&lт&x&9&f&9&f&9&f&lр&x&9&8&9&8&9&8&lа&x&9&1&9&1&9&1&lн&x&8&a&8&a&8&a&lы'
+    lore:
+    - '&7Какие города входят в страну.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать список'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+    left_click_commands:
+    - '[player] n townlist'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  list:
+    material: BOOK
+    slot: 13
+    display_name: '&x&f&f&f&f&f&f&lВ&x&f&8&f&8&f&8&lс&x&f&2&f&2&f&2&lе &x&e&4&e&4&e&4&lс&x&b&4&b&4&b&4&lт&x&a&a&a&a&a&a&lр&x&9&f&9&f&9&f&lа&x&9&4&9&4&9&4&lн&x&8&a&8&a&8&a&lы'
+    lore:
+    - '&7Список всех стран сервера.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать список'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+    left_click_commands:
+    - '[player] n list'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  dep:
+    material: GOLD_INGOT
+    slot: 19
+    display_name: '&x&f&f&f&1&c&1&lП&x&f&f&e&9&a&9&lо&x&f&f&e&1&9&2&lп&x&f&f&d&a&7&a&lо&x&f&f&d&2&6&2&lл&x&f&f&c&a&4&b&lн&x&f&f&c&2&3&3&lи&x&f&f&8&a&1&e&lт&x&f&c&7&f&2&0&lь &x&f&5&6&a&2&3&lк&x&f&2&6&0&2&5&lа&x&e&f&5&5&2&7&lз&x&e&b&4&b&2&8&lн&x&e&8&4&0&2&a&lу'
+    lore:
+    - '&7Общая казна страны платит за общие нужды.'
+    - '&7Вложить может любой гражданин.'
+    - '&8&m                         '
+    - '&8· &7Сумма: &fвпишешь после клика'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести сумму'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши сумму: <click:suggest_command:''/n deposit ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  wd:
+    material: CHEST
+    slot: 20
+    display_name: '&x&f&f&f&1&c&1&lС&x&f&f&e&9&a&9&lн&x&f&f&e&1&9&2&lя&x&f&f&d&a&7&a&lт&x&f&f&d&2&6&2&lь &x&f&f&c&2&3&3&lи&x&f&f&8&a&1&e&lз &x&f&7&7&1&2&2&lк&x&f&4&6&5&2&4&lа&x&f&0&5&9&2&6&lз&x&e&c&4&c&2&8&lн&x&e&8&4&0&2&a&lы'
+    lore:
+    - '&7Забрать монеты из казны страны.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести сумму'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши сумму: <click:suggest_command:''/n withdraw ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  add:
+    material: WRITABLE_BOOK
+    slot: 28
+    display_name: '&x&c&6&e&e&f&f&lП&x&b&6&e&8&f&e&lр&x&a&6&e&2&f&d&lи&x&9&6&d&c&f&c&lг&x&8&5&d&7&f&a&lл&x&7&5&d&1&f&9&lа&x&6&5&c&b&f&8&lс&x&5&5&c&5&f&7&lи&x&3&b&8&2&f&6&lт&x&4&2&7&a&f&3&lь &x&4&f&6&b&e&d&lг&x&5&6&6&3&e&9&lо&x&5&d&5&b&e&6&lр&x&6&3&5&4&e&3&lо&x&6&a&4&c&e&0&lд'
+    lore:
+    - '&7Мэр другого города получит приглашение'
+    - '&7и сможет вступить в страну.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести название города'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши название города: <click:suggest_command:''/n add ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  kick:
+    material: IRON_BOOTS
+    slot: 29
+    display_name: '&x&f&f&c&9&b&8&lИ&x&f&f&b&a&a&7&lс&x&f&f&a&b&9&5&lк&x&f&f&9&c&8&4&lл&x&f&f&8&e&7&3&lю&x&f&f&7&f&6&1&lч&x&f&f&7&0&5&0&lи&x&e&8&2&8&3&c&lт&x&d&b&2&5&3&a&lь &x&c&1&1&e&3&7&lг&x&b&5&1&a&3&5&lо&x&a&8&1&7&3&3&lр&x&9&b&1&3&3&2&lо&x&8&e&1&0&3&0&lд'
+    lore:
+    - '&7Город выходит из страны.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести название города'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши название города: <click:suggest_command:''/n kick ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  ally:
+    material: LIME_BANNER
+    slot: 30
+    display_name: '&x&d&4&f&8&b&0&lС&x&c&0&f&3&a&5&lо&x&a&c&e&e&9&a&lю&x&9&8&e&a&8&f&lз &x&6&f&e&0&7&9&lс&x&5&b&d&b&6&e&lо &x&1&b&a&b&8&b&lс&x&1&9&a&3&8&a&lт&x&1&7&9&b&8&9&lр&x&1&4&9&4&8&9&lа&x&1&2&8&c&8&8&lн&x&1&0&8&4&8&7&lо&x&0&e&7&c&8&6&lй'
+    lore:
+    - '&7Союзники не наносят друг другу урон'
+    - '&7и видны голубой точкой над ником.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести название страны'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши название страны: <click:suggest_command:''/n ally add ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  unally:
+    material: GRAY_BANNER
+    slot: 31
+    display_name: '&x&f&f&f&f&f&f&lР&x&f&a&f&a&f&a&lа&x&f&6&f&6&f&6&lз&x&f&2&f&2&f&2&lо&x&e&d&e&d&e&d&lр&x&e&8&e&8&e&8&lв&x&e&4&e&4&e&4&lа&x&b&4&b&4&b&4&lт&x&a&d&a&d&a&d&lь &x&9&f&9&f&9&f&lс&x&9&8&9&8&9&8&lо&x&9&1&9&1&9&1&lю&x&8&a&8&a&8&a&lз'
+    lore:
+    - '&7Союзник снова становится обычной страной.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести название страны'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши название страны: <click:suggest_command:''/n ally remove ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  enemy:
+    material: RED_BANNER
+    slot: 32
+    display_name: '&x&f&f&c&9&b&8&lО&x&f&f&b&a&a&7&lб&x&f&f&a&b&9&5&lъ&x&f&f&9&c&8&4&lя&x&f&f&8&e&7&3&lв&x&f&f&7&f&6&1&lи&x&f&f&7&0&5&0&lт&x&e&8&2&8&3&c&lь &x&c&e&2&1&3&9&lв&x&c&1&1&e&3&7&lр&x&b&5&1&a&3&5&lа&x&a&8&1&7&3&3&lг&x&9&b&1&3&3&2&lо&x&8&e&1&0&3&0&lм'
+    lore:
+    - '&7Враг подсвечивается красной точкой над ником.'
+    - '&7Это первый шаг к войне и осаде.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести название страны'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши название страны: <click:suggest_command:''/n enemy add ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  unenemy:
+    material: WHITE_BANNER
+    slot: 33
+    display_name: '&x&f&f&f&f&f&f&lС&x&f&a&f&a&f&a&lн&x&f&4&f&4&f&4&lя&x&e&f&e&f&e&f&lт&x&e&9&e&9&e&9&lь &x&b&4&b&4&b&4&lв&x&a&c&a&c&a&c&lр&x&a&3&a&3&a&3&lа&x&9&b&9&b&9&b&lж&x&9&2&9&2&9&2&lд&x&8&a&8&a&8&a&lу'
+    lore:
+    - '&7Страна перестаёт считаться врагом.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести название страны'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши название страны: <click:suggest_command:''/n enemy remove ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  board:
+    material: OAK_SIGN
+    slot: 37
+    display_name: '&x&f&f&f&f&f&f&lО&x&f&b&f&b&f&b&lб&x&f&7&f&7&f&7&lъ&x&f&3&f&3&f&3&lя&x&f&0&f&0&f&0&lв&x&e&c&e&c&e&c&lл&x&e&8&e&8&e&8&lе&x&e&4&e&4&e&4&lн&x&b&4&b&4&b&4&lи&x&a&f&a&f&a&f&lе &x&a&4&a&4&a&4&lс&x&9&f&9&f&9&f&lт&x&9&a&9&a&9&a&lр&x&9&4&9&4&9&4&lа&x&8&f&8&f&8&f&lн&x&8&a&8&a&8&a&lы'
+    lore:
+    - '&7Текст, который видят при входе в страну.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести текст'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши текст: <click:suggest_command:''/n set board ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  capital:
+    material: GOLDEN_HELMET
+    slot: 38
+    display_name: '&x&f&f&f&1&c&1&lС&x&f&f&e&9&a&9&lм&x&f&f&e&1&9&2&lе&x&f&f&d&a&7&a&lн&x&f&f&d&2&6&2&lи&x&f&f&c&a&4&b&lт&x&f&f&c&2&3&3&lь &x&f&c&7&f&2&0&lс&x&f&8&7&5&2&1&lт&x&f&5&6&a&2&3&lо&x&f&2&6&0&2&5&lл&x&e&f&5&5&2&7&lи&x&e&b&4&b&2&8&lц&x&e&8&4&0&2&a&lу'
+    lore:
+    - '&7Столица — главный город страны.'
+    - '&7Король живёт и правит оттуда.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести название города'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши название города: <click:suggest_command:''/n set capital ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  taxes:
+    material: EMERALD
+    slot: 39
+    display_name: '&x&f&f&f&1&c&1&lН&x&f&f&e&9&a&9&lа&x&f&f&e&1&9&2&lл&x&f&f&d&a&7&a&lо&x&f&f&d&2&6&2&lг &x&f&f&c&2&3&3&lс &x&f&c&7&f&2&0&lг&x&f&8&7&5&2&1&lо&x&f&5&6&a&2&3&lр&x&f&2&6&0&2&5&lо&x&e&f&5&5&2&7&lд&x&e&b&4&b&2&8&lо&x&e&8&4&0&2&a&lв'
+    lore:
+    - '&7Сколько в сутки каждый город платит в казну страны.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести сумму'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши сумму: <click:suggest_command:''/n set taxes ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  neutral:
+    material: WHITE_WOOL
+    slot: 40
+    display_name: '&x&f&f&f&f&f&f&lН&x&f&8&f&8&f&8&lе&x&f&2&f&2&f&2&lй&x&e&b&e&b&e&b&lт&x&e&4&e&4&e&4&lр&x&b&4&b&4&b&4&lа&x&a&c&a&c&a&c&lл&x&a&3&a&3&a&3&lи&x&9&b&9&b&9&b&lт&x&9&2&9&2&9&2&lе&x&8&a&8&a&8&a&lт'
+    lore:
+    - '&7Нейтральную страну не осаждают,'
+    - '&7но и она сама не нападает.'
+    - '&7Смена режима может вступить в силу не сразу.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[player] n toggle neutral'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  open:
+    material: OAK_DOOR
+    slot: 41
+    display_name: '&x&f&f&f&f&f&f&lО&x&f&a&f&a&f&a&lт&x&f&6&f&6&f&6&lк&x&f&2&f&2&f&2&lр&x&e&d&e&d&e&d&lы&x&e&8&e&8&e&8&lт&x&e&4&e&4&e&4&lа&x&b&4&b&4&b&4&lя &x&a&8&a&8&a&8&lс&x&a&2&a&2&a&2&lт&x&9&c&9&c&9&c&lр&x&9&6&9&6&9&6&lа&x&9&0&9&0&9&0&lн&x&8&a&8&a&8&a&lа'
+    lore:
+    - '&7Города могут вступать сами, без приглашения.'
+    - ''
+    - '&8Доступно королю страны'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^King$
+    left_click_commands:
+    - '[player] n toggle open'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  war:
+    material: IRON_AXE
+    slot: 43
+    display_name: '&x&f&f&c&9&b&8&lВ&x&f&f&7&0&5&0&lо&x&e&8&2&8&3&c&lй&x&b&b&1&c&3&6&lн&x&8&e&1&0&3&0&lа'
+    lore:
+    - '&7Осады городов — плагин SiegeWar.'
+    - '&7Здесь справка по правилам и текущим осадам.'
+    - ''
+    - '&6» &7ЛКМ &8— &fоткрыть справку по войне'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+    left_click_commands:
+    - '[player] sw'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  leave:
+    material: OAK_DOOR
+    slot: 52
+    display_name: '&x&f&f&c&9&b&8&lВ&x&f&f&b&a&a&7&lы&x&f&f&a&b&9&5&lй&x&f&f&9&c&8&4&lт&x&f&f&8&e&7&3&lи &x&f&f&7&0&5&0&lи&x&e&8&2&8&3&c&lз &x&c&e&2&1&3&9&lс&x&c&1&1&e&3&7&lт&x&b&5&1&a&3&5&lр&x&a&8&1&7&3&3&lа&x&9&b&1&3&3&2&lн&x&8&e&1&0&3&0&lы'
+    lore:
+    - '&7Твой город покинет страну.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fвыйти'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_nation%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[player] n leave'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  back:
+    material: ARROW
+    slot: 45
+    display_name: '&x&f&f&f&f&f&f&lН&x&e&4&e&4&e&4&lа&x&b&4&b&4&b&4&lз&x&9&f&9&f&9&f&lа&x&8&a&8&a&8&a&lд'
+    lore:
+    - '&7Вернуться в главное меню.'
+    left_click_commands:
+    - '[openguimenu] menu'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  close:
+    material: BARRIER
+    slot: 49
+    display_name: '&x&f&f&c&9&b&8&lЗ&x&f&f&9&c&8&4&lа&x&f&f&7&0&5&0&lк&x&e&8&2&8&3&c&lр&x&c&a&2&0&3&8&lы&x&a&c&1&8&3&4&lт&x&8&e&1&0&3&0&lь'
+    lore:
+    - '&7Закрыть это окно.'
+    left_click_commands:
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  _fon:
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 21
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 34
+    - 35
+    - 36
+    - 42
+    - 44
+    - 46
+    - 47
+    - 48
+    - 50
+    - 51
+    - 53
+    priority: 9
+    item_flags:
+    - HIDE_ATTRIBUTES

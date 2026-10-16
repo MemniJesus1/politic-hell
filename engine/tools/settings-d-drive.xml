@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ПРАВИЛО АГЕНТА №1: Maven-репозиторий ГОЛОВНОЙ ТОЧКОЙ ДОЛЖЕН ЛЕЖАТЬ ТОЛЬКО НА D:\ -->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+
+  <localRepository>D:\Programms\Minecraft SERVER ALL\_work\m2-repo</localRepository>
+
+  <mirrors>
+    <mirror>
+      <id>central-d-drive-accounted</id>
+      <name>Central (passthrough)</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+  </mirrors>
+
+  <offline>false</offline>
+</settings>

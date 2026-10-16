@@ -1,0 +1,321 @@
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Header-&-Footer
+header-footer:
+  enabled: true
+  # ТРИ СТИЛЯ шапки. Игрок выбирает сам: /tabstyle pillars | panel | min  (/tabstyle без слова — следующий). Выбор запоминается.
+  # Стиль по умолчанию — hud.yml → tab.default-style. Первым стоит тот, чьё условие сработало (последний — без условия).
+  #   panel   — «Панель»: шапка в рамке-свечении, как у скорборда (тот же рисунок, лайм)
+  #   min     — «Минимал»: без рамки, только титул и строка погоды/времени
+  #   pillars — «Колонны» (запасной): цельные колонны слева и справа + переливающийся фон, анимация PhBanner (tab/animations.yml)
+  # Рамки — картинки ресурспака (224x45 px = 5 строк шапки); строки внутри лежат ПОВЕРХ них: не делай их длиннее ~190 px.
+  designs:
+    panel:
+      display-condition: "%phhud_tabstyle%=panel"
+      header:
+        - "&f\uE840\uF201\uE841\uF201"
+        - "&f\uE391"
+        - ""
+        - "&f%phhud_weather_icon% &7%phhud_weather%   &8|   &f%phhud_clock_icon% &f%phhud_time%"
+        - ""
+      footer:
+        # одна строка: значок связи, пинг, TPS сервера, онлайн  (TPS и пинг TAB красит сам: зелёный = хорошо, красный = лагает)
+        - "&f%phhud_voice%   &8|   &f\uE357 &7%ping% мс   &8|   &7TPS &f%tps%   &8|   &f\uE356 &f%online%"
+    min:
+      display-condition: "%phhud_tabstyle%=min"
+      header:
+        - ""
+        - "&f\uE391"
+        - "&f%phhud_weather_icon% &7%phhud_weather%   &8|   &f%phhud_clock_icon% &f%phhud_time%"
+        - ""
+      footer:
+        # одна строка: значок связи, пинг, TPS сервера, онлайн  (TPS и пинг TAB красит сам: зелёный = хорошо, красный = лагает)
+        - "&f%phhud_voice%   &8|   &f\uE357 &7%ping% мс   &8|   &7TPS &f%tps%   &8|   &f\uE356 &f%online%"
+    default:
+      header:
+        - "%animation:PhBanner%"
+        - "&f\uE391"
+        - ""
+        - "&f%phhud_weather_icon% &7%phhud_weather%   &8|   &f%phhud_clock_icon% &f%phhud_time%"
+        - ""
+      footer:
+        # одна строка: значок связи, пинг, TPS сервера, онлайн  (TPS и пинг TAB красит сам: зелёный = хорошо, красный = лагает)
+        - "&f%phhud_voice%   &8|   &f\uE357 &7%ping% мс   &8|   &7TPS &f%tps%   &8|   &f\uE356 &f%online%"
+tablist-name-formatting:
+  enabled: true
+  disable-condition: '%world%=disabledworld'
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Nametags
+scoreboard-teams:
+  enabled: true
+  enable-collision: true
+  invisible-nametags: false
+  # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Sorting-players-in-tablist
+  sorting-types:
+    - "PLACEHOLDER_A_TO_Z:%phhud_rank_order%"   # сверху старшие ранги (владелец → админ → … → игрок)
+    - "PLACEHOLDER_A_TO_Z:%phhud_country_id%"   # внутри ранга игроки одной страны стоят рядом
+    - "PLACEHOLDER_A_TO_Z:%player%"
+  case-sensitive-sorting: true
+  can-see-friendly-invisibles: false
+  disable-condition: '%world%=disabledworld'
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Playerlist-Objective
+playerlist-objective:
+  enabled: false
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Belowname
+belowname-objective:
+  enabled: false
+  value: "%health%"
+  fancy-value: "&c%health%"
+  fancy-value-default: "NPC"
+  title: "&cHealth"
+  disable-condition: '%world%=disabledworld'
+  view-distance: 10
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Spectator-fix
+prevent-spectator-effect:
+  enabled: false
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Bossbar
+bossbar:
+  enabled: false   # ВЫКЛЮЧЕН: боссбар занят компасом плагина (/compass). Включишь — полоски будут друг над другом
+  toggle-command: /bossbar
+  remember-toggle-choice: true
+  hidden-by-default: false
+  bars:
+    ServerInfo:
+      style: "PROGRESS"
+      color: "WHITE"
+      progress: "100"
+      text: "&f%phhud_weather_icon% &7%phhud_weather%   &8•   &f%phhud_clock_icon% &f%phhud_time%"
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Scoreboard
+# ── Скорборд с рамкой: ДВА стиля. Игрок выбирает сам: /sbstyle full|compact (по умолчанию — hud.yml → scoreboard.default).
+#    full    — полный: 128x136px, 12 строк, подписи «Нация:», «Город:»…   (рамка — глиф E342)
+#    compact — компактный: 126x91px, 7 строк, иконки, по два поля в строке     (рамка — глиф E340)
+#    Строка 1 = [плашка ранга] Ник на плашке-фоне (plate_name.png). Страна: флаг (нет флага — иконка карты) + название. Заголовок — логотип (source_art/logo.png), под панелью надписей нет.
+#    Рамка и заголовок — глифы в title (ресурспак), строки рисуются поверх. Строк у каждого стиля РОВНО столько, сколько выше.
+#    Не делай строки длиннее ~118 px (full) / ~116 px (compact), иначе панель расширится и рамка съедет.
+#    TAB берёт ПЕРВЫЙ скорборд, у которого выполнено display-condition; последний (без условия) — запасной.
+scoreboard:
+  enabled: true
+  toggle-command: /sb
+  remember-toggle-choice: true
+  hidden-by-default: false
+  delay-on-join-milliseconds: 0
+  scoreboards:
+    full:
+      display-condition: "%phhud_sb%=full"
+      title: "&f\uF202\uE342\uF26C\uE341\uF014"
+      lines:
+        - "&f\uF009%phhud_namebar_106%"
+        - ""
+        - "&f\uF009%phhud_flag_or_map% &7Нация: &f%phhud_nation_short_9%"
+        - "&f\uF009\uE351 &7Город: &f%phhud_town_short_9%"
+        - "&f\uF009\uE352 &7Роль: &f%phhud_role_short_9%"
+        - "&f\uF009\uE358 &7Казна: &e%phhud_tbank%"
+        - "&f\uF009\uE359 &7Участки: &f%phhud_plots%"
+        - "&f\uF009\uE356 &7Жители: &f%phhud_residents%"
+        - "&f\uF009\uE353 &7Война: &f%phhud_war_short_9%"
+        - ""
+        - "&f\uF009\uE354 &7Монеты: &e%phhud_coins_compact%"
+        - "&f\uF009\uE355 &7Донат: &d%phhud_donate_compact%"
+    main:
+      title: "&f\uF202\uE340\uF26B\uE341\uF013"
+      lines:
+        - "&f\uF009%phhud_namebar_104%"
+        - "&f\uF009%phhud_flag_or_map% &f%phhud_country_short_14%"
+        - "&f\uF009\uE352 &f%phhud_role_short_7% &8| &f\uE356 &f%phhud_residents%"
+        - "&f\uF009\uE358 &e%phhud_tbank% &8| &f\uE359 &f%phhud_plots%"
+        - "&f\uF009\uE353 &f%phhud_war_short_14%"
+        - ""
+        - "&f\uF009\uE354 &e%phhud_coins_compact% &8| &f\uE355 &d%phhud_donate_compact%"
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Layout
+layout:
+  enabled: false
+  direction: COLUMNS
+  default-skin: mineskin:37e93c8e12cd426cb28fce31969e0674
+  enable-remaining-players-text: true
+  remaining-players-text: '... and %s more'
+  empty-slot-ping-value: 1000
+  layouts:
+    default:
+      slot-count: 80
+      fixed-slots:
+        - '1|&3Website&f:'
+        - '2|&bmyserver.net'
+        - '3|&8&m                       '
+        - '4|&3Name&f:'
+        - '5|&b%player%'
+        - '7|&3Rank&f:'
+        - '8|Rank: %group%'
+        - '10|&3World&f:'
+        - '11|&b%world%'
+        - '13|&3Time&f:'
+        - '14|&b%time%'
+        - '21|&3Teamspeak&f:'
+        - '22|&bts.myserver.net'
+        - '23|&8&m                       '
+        - '41|&3Store&f:'
+        - '42|&bshop.myserver.net'
+        - '43|&8&m                       '
+      groups:
+        staff:
+          display-condition: permission:tab.staff
+          slots:
+            - 24-40
+        players:
+          slots:
+            - 44-80
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Ping-Spoof
+ping-spoof:
+  enabled: false
+  value: 0
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Global-playerlist
+global-playerlist:
+  enabled: false
+  display-others-as-spectators: false
+  display-vanished-players-as-spectators: true
+  isolate-unlisted-servers: false
+  update-latency: false
+  spy-servers:
+    - spyserver1
+    - spyserver2
+  server-groups:
+    lobbies:
+      - lobby1
+      - lobby2
+    group2:
+      - server1
+      - server2
+
+placeholders:
+  date-format: "dd.MM.yyyy"
+  time-format: "[HH:mm:ss / h:mm a]"
+  time-offset: 0
+  register-tab-expansion: false
+  locale: en-US
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Placeholder-output-replacements
+placeholder-output-replacements:
+  "%essentials_vanished%":
+    "yes": "&7| Vanished"
+    "no": ""
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Conditional-placeholders
+conditions:
+  nick: # use it with %condition:nick%
+    conditions:
+      - "%player%=%essentials_nickname%"
+    true: "%player%"
+    false: "~%essentials_nickname%"
+
+placeholder-refresh-intervals:
+  default-refresh-interval: 500
+  "%server_uptime%": 1000
+  "%server_tps_1_colored%": 1000
+  "%server_unique_joins%": 5000
+  "%player_health%": 200
+  "%player_ping%": 1000
+  "%vault_prefix%": 1000
+  "%rel_factionsuuid_relation_color%": 1000
+  "%phhud_voice%": 1000
+  "%phhud_flag%": 2000
+  "%phhud_country%": 2000
+  "%phhud_country_id%": 2000
+  "%phhud_weather_icon%": 2000
+  "%phhud_weather%": 2000
+  "%phhud_time%": 1000
+  "%phhud_afk%": 1000
+  "%phhud_name_color%": 1000
+  "%rel_phhud_relation%": 1000
+
+# assigning groups by permission nodes instead of taking them from permission plugin
+assign-groups-by-permissions: false
+
+# if the option above is true, all groups are taken based on permissions and the one higher in this list is used as primary
+# Warning! This is not sorting list and has nothing to do with sorting players in tablist!
+primary-group-finding-list:
+  - Owner
+  - Admin
+  - Mod
+  - Helper
+  - default
+
+# Refresh interval (in milliseconds) of:
+# - Permission checks in conditions / sorting
+# - Group retrieving from permission plugin for sorting / per-group properties
+permission-refresh-interval: 1000
+
+# Unlocks extra console messages
+debug: false
+
+# https://github.com/NEZNAMY/TAB/wiki/MySQL
+mysql:
+  enabled: false
+  host: 127.0.0.1
+  port: 3306
+  database: tab
+  username: user
+  password: password
+  useSSL: true
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Multi-server-support
+proxy-support:
+  enabled: true
+  channel-name-suffix: "custom"
+  # Supported types: PLUGIN, REDIS, RABBITMQ
+  type: PLUGIN
+  plugin:
+    # Compatible plugins: RedisBungee
+    # If enabled and compatible plugin is found, hook is enabled to work with proxied players
+    name: RedisBungee
+  redis:
+    url: 'redis://:password@localhost:6379/0'
+  rabbitmq:
+    exchange: 'plugin'
+    url: 'amqp://guest:guest@localhost:5672/%2F'
+
+components:
+  minimessage-support: true
+  disable-shadow-for-heads: true
+
+# Internal value, do not change this
+config-version: 7
+
+########################################################################
+# BUKKIT ONLY - THE FOLLOWING SECTION IS ONLY FOR BACKEND INSTALLATION #
+########################################################################
+
+# https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Per-world-playerlist
+per-world-playerlist:
+  enabled: false
+  # players with tab.staff will always see all players
+  allow-bypass-permission: false
+  # players in these worlds will always see all players
+  ignore-effect-in-worlds:
+    - ignoredworld
+    - build
+  shared-playerlist-world-groups:
+    lobby:
+      - lobby1
+      - lobby2
+    minigames:
+      - paintball
+      - bedwars
+
+compensate-for-packetevents-bug: false
+
+#####################################################################
+# PROXY ONLY - THE FOLLOWING SECTION IS ONLY FOR PROXY INSTALLATION #
+#####################################################################
+
+# Take permissions and groups from backend server instead of proxy
+use-bukkit-permissions-manager: false
+
+# Sometimes server might be using offline uuids in tablist instead of online, such as disabling waterfall's tablist rewrite option
+# If you experience tablist formatting not working, toggle this option (set it to opposite value)
+# Only affects proxies with online mode enabled
+use-online-uuid-in-tablist: true

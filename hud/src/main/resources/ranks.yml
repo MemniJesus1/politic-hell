@@ -1,0 +1,60 @@
+# ════════════════════════════════════════════════════════════════════════════
+#  ranks.yml — ПРИВИЛЕГИИ / ДОНАТ-ЗНАЧКИ  (значок перед ником: таб, над головой, скорборд)
+#
+#  КАК ЭТО РАБОТАЕТ
+#   • Список ниже читается СВЕРХУ ВНИЗ. Побеждает ПЕРВЫЙ ранг, право (permission) которого есть у игрока.
+#     Поэтому порядок = старшинство: выше — главнее. Получил роль выше (дали VIP → стал модератором) — значок
+#     поменяется сам в течение секунды.
+#   • Ранг «по умолчанию» (default: player) показывается ВСЕМ с самого начала — иконка «Игрок».
+#   • Право берётся из LuckPerms: группа vip даёт право  group.vip.   Создать группу и выдать игроку:
+#         /lp creategroup vip          /lp user <ник> parent add vip
+#     Дальше ничего настраивать не надо — значок появится сам.
+#   • Ручная выдача без LuckPerms (для тестов): /hudrank <ник> <ранг>   сбросить: /hudrank <ник> auto
+#
+#  КАК ПОМЕНЯТЬ ЗНАЧОК
+#   • icon: встроенное имя (owner admin moderator helper premium vip player) — цветные плашки с надписью (ЛИДЕР, АДМИН, МОДЕР, ХЕЛПЕР, ПРЕМИУМ, VIP, ИГРОК), рисуются при сборке пака;
+#     ИЛИ свой символ из ресурспака:  icon: "\uE380"   (добавишь свою картинку — см. ASSETS_GUIDE.md).
+#   • label — подпись для текстовых мест (чат, меню): %phhud_rank_label%,  color — цвет подписи: %phhud_rank_color%
+#   • Добавить свою роль: скопируй любой блок, поменяй имя и permission, поставь НА НУЖНОЕ МЕСТО по старшинству.
+#  Применить правки: /hudreload
+# ════════════════════════════════════════════════════════════════════════════
+
+default: player        # какой ранг у всех, у кого нет ничего выше
+op-rank: ""            # если не пусто — ОП-ы без групп получают этот ранг (например: owner). Для тестов удобно: owner
+
+ranks:
+  owner:
+    permission: "group.owner"
+    icon: owner
+    label: "Лидер"
+    color: "&4"
+  admin:
+    permission: "group.admin"
+    icon: admin
+    label: "Админ"
+    color: "&c"
+  moderator:
+    permission: "group.moderator"
+    icon: moderator
+    label: "Модератор"
+    color: "&2"
+  helper:
+    permission: "group.helper"
+    icon: helper
+    label: "Помощник"
+    color: "&b"
+  premium:
+    permission: "group.premium"
+    icon: premium
+    label: "Премиум"
+    color: "&d"
+  vip:
+    permission: "group.vip"
+    icon: vip
+    label: "VIP"
+    color: "&6"
+  player:
+    permission: ""      # пусто = у всех (это ранг по умолчанию)
+    icon: player
+    label: "Игрок"
+    color: "&7"

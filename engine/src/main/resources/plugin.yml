@@ -1,0 +1,41 @@
+name: PoliticHellEngine
+version: '1.16.0'
+main: me.politichell.engine.PoliticHellEngine
+api-version: '1.21'
+description: 'PoliticHell Engine — Стиль 1 (экранные 3D-меню с курсором) + разметка территорий Towny (HOI4-данные)'
+author: MemniJesus
+
+commands:
+  menu:
+    description: Обложка — главное 3D-меню (Стиль 1)
+    usage: /menu
+    aliases: [pda, hub]
+  arsenal:
+    description: 3D-осмотр оружия и характеристик
+    usage: /arsenal
+    aliases: [pharsenal]
+  equip:
+    description: Экипировка и классы (3D-манекен)
+    usage: /equip
+    aliases: [phequip]
+  crates:
+    description: Ящики снабжения (3D-рулетка, pity, осколки)
+    usage: /crates
+    aliases: [phcrates]
+  strana:
+    description: Штаб державы — древо эпох и фокусов
+    usage: /strana
+    aliases: [phstrana, tech]
+  phengine:
+    description: Управление движком (reload/reset/help)
+    usage: /phengine <reload|reset|help>
+    permission: politichell.admin
+  phcoins:
+    description: Тестовая экономика /phcoins <add|set> <игрок> <сумма>
+    usage: /phcoins <add|set> <player> <amount>
+    permission: politichell.admin
+
+permissions:
+  politichell.admin:
+    description: Доступ к управлению движком
+    default: op

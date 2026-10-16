@@ -1,0 +1,31 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  МАССОВЫЕ ПРАВИЛА — меняют привязку / редкость / иконку СРАЗУ у многих предметов
+#  Файл читается сверху вниз: если предмет подходит под несколько правил, побеждает НИЖНЕЕ.
+#  Точечная правка в vanilla.yml (у конкретного предмета) всегда сильнее правила отсюда.
+#  Свой предмет из items.yml и правка конкретного экземпляра (/card set) — сильнее всего.
+#  После правок: /card reload
+#
+#  Поля правила:
+#    match:     шаблон названия материала (BIG_LETTERS), * = любые символы. Можно списком:  ["NETHERITE_*", "ELYTRA"]
+#    category:  weapon | tool | armor | food | block | resource | potion | magic | misc   (вместо match или вместе с ним)
+#    except:    исключения (такие же шаблоны)
+#    binding:   free | personal | locked | temporary      (Свободный / Персональный / Неотчуждаемый / Временный)
+#    rarity:    common | uncommon | rare | epic | legendary | mythic
+#    bind-on:   pickup | equip | use | none   — привязать НЕ сразу, а при событии (см. cards.yml → «ПРИВЯЗКА ПРИ СОБЫТИИ»)
+#    icon:      weapon | tool | armor | food | block | resource | potion | magic | misc | custom
+#
+#  Примеры (раскомментируй, убрав # в начале строк):
+#    - match: "NETHERITE_*"          # всё незеритовое — персональное: не выпадает после смерти
+#      binding: personal
+#    - category: weapon              # всё оружие — Эпическое, но кроме луков
+#      rarity: epic
+#      except: ["BOW", "CROSSBOW"]
+#    - match: "NETHERITE_*"          # незеритовое: привязывается к тому, кто его НАДЕЛ или взял в руки
+#      binding: personal
+#      bind-on: equip
+#    - match: ["ELYTRA", "TOTEM_OF_UNDYING"]
+#      binding: locked
+#
+#  Быстро добавить правило прямо в игре:  /card group <шаблон|category:тип> <привязка> [редкость] [on=pickup|equip|use]
+# ═══════════════════════════════════════════════════════════════════════════
+groups:

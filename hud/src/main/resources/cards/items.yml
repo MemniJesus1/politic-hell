@@ -1,0 +1,65 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  СВОИ ПРЕДМЕТЫ.  Выдать: /card give <ник> <id> [кол-во]     Список: /card list
+#  Сохранить предмет из руки сюда: /card save <id>             Перечитать: /card reload
+#
+#  Поля (обязателен только base):
+#    base:         материал Minecraft, на котором основан предмет (DIAMOND_SWORD, PAPER, COMPASS …)
+#    name:         название БЕЗ цветов — цвет-градиент даёт редкость
+#    rarity:       common | uncommon | rare | epic | legendary | mythic
+#    binding:      consumable | personal | locked | temporary   (см. cards.yml)
+#    bind-on:      pickup | equip | use — привязать не сразу, а когда игрок подберёт / наденет / применит (см. cards.yml)
+#    icon:         weapon | tool | armor | food | block | resource | potion | magic | misc | custom   (иконка перед названием)
+#    description:  список строк; цвета через & (&f белый, &e жёлтый …); перенос по ширине автоматический
+#    stats:        свои характеристики «Подпись: значение» (значение с «+» — зелёное, с «-» — красное); добавляются к авто
+#    auto-stats:   true — к ним добавятся авто-характеристики материала (урон, броня, прочность…)
+#    attributes:   настоящие бонусы предмета: «атрибут=число@слот», напр. "attack_damage=9@mainhand", "armor=3@chest".
+#                  Если задать — ванильные бонусы материала заменяются вашими. Слоты: mainhand offhand head chest legs feet hand armor any
+#    ttl:          срок жизни в секундах (отсчёт — с момента, когда предмет первый раз оказался у игрока)
+#    event:        исчезнет по событию: death (при смерти), logout (при выходе), restart (при перезапуске сервера) или своё имя —
+#                  команда /card expire <имя> убирает все такие предметы у всех
+#    item-model:   модель из ресурспака, напр. "politichell:royal_sword"   |  custom-model-data: число
+#    glow: true    эффект зачарования без зачарований      unbreakable: true — неломаемый
+# ═══════════════════════════════════════════════════════════════════════════
+items:
+  demo_blade:
+    base: DIAMOND_SWORD
+    name: "Клинок Первого Консула"
+    rarity: legendary
+    binding: personal
+    icon: weapon
+    description:
+      - "Меч, который достаётся лишь одному из тысячи. Он признаёт только владельца и не отпускает его руку — ни в бою, ни после смерти."
+      - "&7Хранить можно лишь в эндер-сундуке или шалкере."
+    stats:
+      - "Урон от нечисти: +3"
+    attributes:
+      - "attack_damage=10@mainhand"
+      - "attack_speed=-2.4@mainhand"
+    glow: true
+  demo_oath:
+    base: COMPASS
+    name: "Клятва города"
+    rarity: epic
+    binding: locked
+    icon: custom
+    description:
+      - "Нить, связывающая тебя с родным городом. Привязана намертво: только твой инвентарь, никаких сундуков, шалкеров и передач."
+  demo_pass:
+    base: PAPER
+    name: "Пропуск на ивент"
+    rarity: rare
+    binding: temporary
+    icon: misc
+    description:
+      - "Одноразовый пропуск. Истекает через час или с завершением ивента."
+    ttl: 3600
+    event: demo_event
+    glow: true
+  demo_ration:
+    base: BREAD
+    name: "Походный паёк"
+    rarity: uncommon
+    binding: consumable
+    icon: food
+    description:
+      - "Сытный хлеб в дорогу. Съешь — и можно идти дальше."

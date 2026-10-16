@@ -1,0 +1,4 @@
+menu
+gorod
+strana
+uchastok

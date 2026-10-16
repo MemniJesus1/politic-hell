@@ -1,0 +1,755 @@
+# Меню города (/gorod). Команды — стандартные команды Towny (/t ...). Кнопки с «впиши» подставляют команду в чат: игрок дописывает значение и жмёт Enter.
+# Кнопки управления видят только мэр/король (view_requirement: BOSS).
+menu_title: '&8» &x&d&4&f&8&b&0&lГ&x&5&b&d&b&6&e&lо&x&1&d&b&3&8&c&lр&x&1&6&9&8&8&9&lо&x&0&e&7&c&8&6&lд'
+size: 54
+open_command:
+- gorod
+- city
+register_command: true
+update_interval: 20
+items:
+  new:
+    material: EMERALD_BLOCK
+    slot: 20
+    display_name: '&x&d&4&f&8&b&0&lС&x&b&c&f&2&a&3&lо&x&a&4&e&c&9&6&lз&x&8&b&e&7&8&8&lд&x&7&3&e&1&7&b&lа&x&5&b&d&b&6&e&lт&x&1&d&b&3&8&c&lь &x&1&8&a&1&8&a&lг&x&1&6&9&8&8&9&lо&x&1&3&8&e&8&8&lр&x&1&0&8&5&8&7&lо&x&0&e&7&c&8&6&lд'
+    lore:
+    - '&7Ты станешь мэром. Пока нет страны, название города'
+    - '&7будет и названием твоей страны над ником.'
+    - '&8&m                         '
+    - '&8· &7Цена: &fзадана настройками сервера'
+    - '&8· &7Название: &fвпишешь после клика'
+    - ''
+    - '&6» &7ЛКМ &8— &fпридумать название'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'false'
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши название города: <click:suggest_command:''/t new ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+    priority: 1
+  accept:
+    material: WRITABLE_BOOK
+    slot: 22
+    display_name: '&x&c&6&e&e&f&f&lП&x&b&8&e&9&f&e&lр&x&a&a&e&4&f&d&lи&x&9&c&d&f&f&c&lн&x&8&e&d&a&f&b&lя&x&7&f&d&4&f&a&lт&x&7&1&c&f&f&9&lь &x&5&5&c&5&f&7&lп&x&3&b&8&2&f&6&lр&x&4&0&7&c&f&4&lи&x&4&5&7&6&f&1&lг&x&4&b&7&0&e&f&lл&x&5&0&6&a&e&c&lа&x&5&5&6&4&e&a&lш&x&5&a&5&e&e&7&lе&x&6&0&5&8&e&5&lн&x&6&5&5&2&e&2&lи&x&6&a&4&c&e&0&lе'
+    lore:
+    - '&7Если мэр позвал тебя в город, приглашение'
+    - '&7ждёт здесь. Принять — и ты станешь жителем.'
+    - ''
+    - '&6» &7ЛКМ &8— &fоткрыть список приглашений'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'false'
+    left_click_commands:
+    - '[player] invite list'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  list:
+    material: BOOK
+    slot: 24
+    display_name: '&x&f&f&f&f&f&f&lВ&x&f&8&f&8&f&8&lс&x&f&2&f&2&f&2&lе &x&e&4&e&4&e&4&lг&x&b&4&b&4&b&4&lо&x&a&a&a&a&a&a&lр&x&9&f&9&f&9&f&lо&x&9&4&9&4&9&4&lд&x&8&a&8&a&8&a&lа'
+    lore:
+    - '&7Список городов сервера. Найди тот,'
+    - '&7что тебе по душе, и попроси мэра принять.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать список'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'false'
+    left_click_commands:
+    - '[player] t list'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+    priority: 1
+  mapn:
+    material: FILLED_MAP
+    slot: 31
+    display_name: '&x&f&f&f&f&f&f&lК&x&e&4&e&4&e&4&lа&x&b&4&b&4&b&4&lр&x&9&f&9&f&9&f&lт&x&8&a&8&a&8&a&lа'
+    lore:
+    - '&7Чужие города и свободная земля вокруг.'
+    - '&7Поможет выбрать место для своего города.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать карту'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'false'
+    left_click_commands:
+    - '[player] towny map'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+    priority: 1
+  info:
+    material: BOOK
+    slot: 4
+    display_name: '&x&d&4&f&8&b&0&lГ&x&5&b&d&b&6&e&lо&x&1&d&b&3&8&c&lр&x&1&6&9&8&8&9&lо&x&0&e&7&c&8&6&lд &8» &f%townyadvanced_town%'
+    lore:
+    - '&8· &7Мэр: &f%townyadvanced_town_mayor%'
+    - '&8· &7Жители: &f%townyadvanced_town_residents_online% &7онлайн из &f%townyadvanced_town_residents_amount%'
+    - '&8· &7Участки: &f%townyadvanced_town_townblocks_used% &7из &f%townyadvanced_town_townblocks_maximum%'
+    - '&8&m                         '
+    - '&8· &7Казна: &e%townyadvanced_town_balance%'
+    - '&8· &7Расходы в сутки: &c%townyadvanced_daily_town_upkeep%'
+    - ''
+    - '&8Если казна опустеет, город может исчезнуть'
+    - ''
+    - '&6» &7ЛКМ &8— &fподробная справка в чате'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[player] t'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+    priority: 1
+  spawn:
+    material: RED_BED
+    slot: 10
+    display_name: '&x&f&f&f&f&f&f&lД&x&e&4&e&4&e&4&lо&x&b&4&b&4&b&4&lм&x&9&f&9&f&9&f&lо&x&8&a&8&a&8&a&lй'
+    lore:
+    - '&7Телепорт на главную точку города.'
+    - ''
+    - '&6» &7ЛКМ &8— &fвернуться в город'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[player] t spawn'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  here:
+    material: SPYGLASS
+    slot: 11
+    display_name: '&x&f&f&f&f&f&f&lГ&x&f&2&f&2&f&2&lд&x&e&4&e&4&e&4&lе &x&9&f&9&f&9&f&lя&x&8&a&8&a&8&a&l?'
+    lore:
+    - '&7Чей участок у тебя под ногами:'
+    - '&7город, владелец, тип.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[player] t here'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  online:
+    material: PLAYER_HEAD
+    slot: 12
+    display_name: '&x&f&f&f&f&f&f&lК&x&f&8&f&8&f&8&lт&x&f&2&f&2&f&2&lо &x&e&4&e&4&e&4&lо&x&b&4&b&4&b&4&lн&x&a&a&a&a&a&a&lл&x&9&f&9&f&9&f&lа&x&9&4&9&4&9&4&lй&x&8&a&8&a&8&a&lн'
+    lore:
+    - '&7Жители города, которые сейчас в игре.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[player] t online'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  res:
+    material: PAPER
+    slot: 13
+    display_name: '&x&f&f&f&f&f&f&lЖ&x&f&2&f&2&f&2&lи&x&e&4&e&4&e&4&lт&x&b&4&b&4&b&4&lе&x&9&f&9&f&9&f&lл&x&8&a&8&a&8&a&lи'
+    lore:
+    - '&7Все жители города — и онлайн, и нет.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать список'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[player] t reslist'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  mapt:
+    material: FILLED_MAP
+    slot: 14
+    display_name: '&x&f&f&f&f&f&f&lК&x&e&4&e&4&e&4&lа&x&b&4&b&4&b&4&lр&x&9&f&9&f&9&f&lт&x&8&a&8&a&8&a&lа'
+    lore:
+    - '&7Участки города и соседей вокруг тебя.'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоказать карту'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[player] towny map'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  claim:
+    material: GRASS_BLOCK
+    slot: 19
+    display_name: '&x&d&4&f&8&b&0&lЗ&x&c&0&f&3&a&5&lа&x&a&c&e&e&9&a&lн&x&9&8&e&a&8&f&lя&x&8&3&e&5&8&4&lт&x&6&f&e&0&7&9&lь &x&1&d&b&3&8&c&lу&x&1&a&a&a&8&b&lч&x&1&8&a&1&8&a&lа&x&1&6&9&8&8&9&lс&x&1&3&8&e&8&8&lт&x&1&0&8&5&8&7&lо&x&0&e&7&c&8&6&lк'
+    lore:
+    - '&7Присоединяет чанк, на котором стоишь, к городу.'
+    - '&7Занимать можно рядом с уже занятой землёй.'
+    - '&8&m                         '
+    - '&8· &7Платит: &fказна города'
+    - ''
+    - '&6» &7ЛКМ &8— &fзанять этот чанк'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[player] t claim'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  claimauto:
+    material: LIME_DYE
+    slot: 20
+    display_name: '&x&d&4&f&8&b&0&lЗ&x&c&3&f&4&a&7&lа&x&b&1&f&0&9&d&lн&x&a&0&e&c&9&4&lи&x&8&f&e&7&8&a&lм&x&7&e&e&3&8&1&lа&x&6&c&d&f&7&7&lт&x&5&b&d&b&6&e&lь &x&1&b&a&b&8&b&lн&x&1&9&a&3&8&a&lа &x&1&4&9&4&8&9&lх&x&1&2&8&c&8&8&lо&x&1&0&8&4&8&7&lд&x&0&e&7&c&8&6&lу'
+    lore:
+    - '&7Режим автозахвата: идёшь — земля занимается.'
+    - '&7Нажми ещё раз, чтобы выключить.'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[player] t claim auto'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+    priority: 1
+  unclaim:
+    material: DIRT
+    slot: 21
+    display_name: '&x&f&f&c&9&b&8&lО&x&f&f&b&f&a&c&lт&x&f&f&b&5&a&1&lк&x&f&f&a&b&9&5&lа&x&f&f&a&1&8&a&lз&x&f&f&9&8&7&e&lа&x&f&f&8&e&7&3&lт&x&f&f&8&4&6&7&lь&x&f&f&7&a&5&c&lс&x&f&f&7&0&5&0&lя &x&d&f&2&6&3&b&lо&x&d&6&2&3&3&a&lт &x&c&4&1&e&3&7&lу&x&b&b&1&c&3&6&lч&x&b&2&1&a&3&5&lа&x&a&9&1&7&3&4&lс&x&a&0&1&5&3&2&lт&x&9&7&1&2&3&1&lк&x&8&e&1&0&3&0&lа'
+    lore:
+    - '&7Возвращает чанк под ногами в дикую природу.'
+    - '&7Постройки на нём перестанут быть защищены.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fотказаться от чанка'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[player] t unclaim'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  dep:
+    material: GOLD_INGOT
+    slot: 23
+    display_name: '&x&f&f&f&1&c&1&lП&x&f&f&e&9&a&9&lо&x&f&f&e&1&9&2&lп&x&f&f&d&a&7&a&lо&x&f&f&d&2&6&2&lл&x&f&f&c&a&4&b&lн&x&f&f&c&2&3&3&lи&x&f&f&8&a&1&e&lт&x&f&c&7&f&2&0&lь &x&f&5&6&a&2&3&lк&x&f&2&6&0&2&5&lа&x&e&f&5&5&2&7&lз&x&e&b&4&b&2&8&lн&x&e&8&4&0&2&a&lу'
+    lore:
+    - '&7Казна платит за участки и расходы города.'
+    - '&7Вложить может любой житель.'
+    - '&8&m                         '
+    - '&8· &7Сумма: &fвпишешь после клика'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести сумму'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши сумму: <click:suggest_command:''/t deposit ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  wd:
+    material: CHEST
+    slot: 24
+    display_name: '&x&f&f&f&1&c&1&lС&x&f&f&e&9&a&9&lн&x&f&f&e&1&9&2&lя&x&f&f&d&a&7&a&lт&x&f&f&d&2&6&2&lь &x&f&f&c&2&3&3&lи&x&f&f&8&a&1&e&lз &x&f&7&7&1&2&2&lк&x&f&4&6&5&2&4&lа&x&f&0&5&9&2&6&lз&x&e&c&4&c&2&8&lн&x&e&8&4&0&2&a&lы'
+    lore:
+    - '&7Забрать монеты из общей казны себе.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести сумму'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши сумму: <click:suggest_command:''/t withdraw ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+    priority: 1
+  add:
+    material: PLAYER_HEAD
+    slot: 28
+    display_name: '&x&c&6&e&e&f&f&lП&x&b&6&e&8&f&e&lр&x&a&6&e&2&f&d&lи&x&9&6&d&c&f&c&lг&x&8&5&d&7&f&a&lл&x&7&5&d&1&f&9&lа&x&6&5&c&b&f&8&lс&x&5&5&c&5&f&7&lи&x&3&b&8&2&f&6&lт&x&4&1&7&b&f&3&lь &x&4&d&6&e&e&e&lи&x&5&2&6&7&e&b&lг&x&5&8&6&0&e&8&lр&x&5&e&5&a&e&6&lо&x&6&4&5&3&e&3&lк&x&6&a&4&c&e&0&lа'
+    lore:
+    - '&7Отправляет приглашение. Игрок примет его'
+    - '&7в меню «Город» → «Принять приглашение».'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести ник'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши ник игрока: <click:suggest_command:''/t add ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  kick:
+    material: IRON_BOOTS
+    slot: 29
+    display_name: '&x&f&f&c&9&b&8&lВ&x&f&f&b&a&a&7&lы&x&f&f&a&b&9&5&lг&x&f&f&9&c&8&4&lн&x&f&f&8&e&7&3&lа&x&f&f&7&f&6&1&lт&x&f&f&7&0&5&0&lь &x&d&9&2&4&3&a&lж&x&c&a&2&0&3&8&lи&x&b&b&1&c&3&6&lт&x&a&c&1&8&3&4&lе&x&9&d&1&4&3&2&lл&x&8&e&1&0&3&0&lя'
+    lore:
+    - '&7Житель покидает город и теряет права на его земле.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести ник'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши ник игрока: <click:suggest_command:''/t kick ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  rank:
+    material: NAME_TAG
+    slot: 30
+    display_name: '&x&f&f&f&1&c&1&lН&x&f&f&e&9&a&9&lа&x&f&f&e&1&9&2&lз&x&f&f&d&a&7&a&lн&x&f&f&d&2&6&2&lа&x&f&f&c&a&4&b&lч&x&f&f&c&2&3&3&lи&x&f&f&8&a&1&e&lт&x&f&b&7&e&2&0&lь &x&f&4&6&5&2&4&lр&x&f&0&5&9&2&6&lо&x&e&c&4&c&2&8&lл&x&e&8&4&0&2&a&lь'
+    lore:
+    - '&7Помощник, казначей и другие роли'
+    - '&7делят управление городом с мэром.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести «ник роль»'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши: ник роль  (например: Ivan assistant) <click:suggest_command:''/t rank add ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  board:
+    material: OAK_SIGN
+    slot: 31
+    display_name: '&x&f&f&f&f&f&f&lО&x&f&8&f&8&f&8&lб&x&f&2&f&2&f&2&lъ&x&e&b&e&b&e&b&lя&x&e&4&e&4&e&4&lв&x&b&4&b&4&b&4&lл&x&a&a&a&a&a&a&lе&x&9&f&9&f&9&f&lн&x&9&4&9&4&9&4&lи&x&8&a&8&a&8&a&lе'
+    lore:
+    - '&7Надпись, которую видит каждый, кто входит в город.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести текст'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши текст: <click:suggest_command:''/t set board ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+    priority: 1
+  taxes:
+    material: EMERALD
+    slot: 32
+    display_name: '&x&f&f&f&1&c&1&lН&x&f&f&e&9&a&9&lа&x&f&f&e&1&9&2&lл&x&f&f&d&a&7&a&lо&x&f&f&d&2&6&2&lг &x&f&f&c&2&3&3&lс &x&f&c&7&f&2&0&lж&x&f&8&7&5&2&1&lи&x&f&5&6&a&2&3&lт&x&f&2&6&0&2&5&lе&x&e&f&5&5&2&7&lл&x&e&b&4&b&2&8&lе&x&e&8&4&0&2&a&lй'
+    lore:
+    - '&7Сколько монет в сутки платит каждый житель'
+    - '&7в казну города. Ноль — без налога.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fввести сумму'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[minimessage] <yellow>Впиши сумму: <click:suggest_command:''/t set taxes ''><aqua><u>[нажми — команда появится в чате]</u></aqua></click>'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  sethome:
+    material: LODESTONE
+    slot: 33
+    display_name: '&x&f&f&f&f&f&f&lН&x&f&b&f&b&f&b&lо&x&f&7&f&7&f&7&lв&x&f&3&f&3&f&3&lы&x&f&0&f&0&f&0&lй &x&e&8&e&8&e&8&lд&x&e&4&e&4&e&4&lо&x&b&4&b&4&b&4&lм &x&a&8&a&8&a&8&lг&x&a&2&a&2&a&2&lо&x&9&c&9&c&9&c&lр&x&9&6&9&6&9&6&lо&x&9&0&9&0&9&0&lд&x&8&a&8&a&8&a&lа'
+    lore:
+    - '&7Переносит главную точку города'
+    - '&7туда, где ты стоишь (внутри города).'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fпоставить здесь'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[player] t set spawn'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  tpvp:
+    material: IRON_SWORD
+    slot: 37
+    display_name: '&x&f&f&f&f&f&f&lП&x&b&4&b&4&b&4&lв&x&8&a&8&a&8&a&lП'
+    lore:
+    - '&7Можно ли драться внутри города.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[player] t toggle pvp'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  texp:
+    material: TNT
+    slot: 38
+    display_name: '&x&f&f&f&f&f&f&lВ&x&f&2&f&2&f&2&lз&x&e&4&e&4&e&4&lр&x&b&4&b&4&b&4&lы&x&9&f&9&f&9&f&lв&x&8&a&8&a&8&a&lы'
+    lore:
+    - '&7Ломают ли взрывы постройки в городе.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[player] t toggle explosion'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  tfire:
+    material: FLINT_AND_STEEL
+    slot: 39
+    display_name: '&x&f&f&f&f&f&f&lО&x&e&4&e&4&e&4&lг&x&b&4&b&4&b&4&lо&x&9&f&9&f&9&f&lн&x&8&a&8&a&8&a&lь'
+    lore:
+    - '&7Распространяется ли огонь по городу.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[player] t toggle fire'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  tmobs:
+    material: ZOMBIE_HEAD
+    slot: 40
+    display_name: '&x&f&f&f&f&f&f&lМ&x&e&4&e&4&e&4&lо&x&b&4&b&4&b&4&lб&x&8&a&8&a&8&a&lы'
+    lore:
+    - '&7Появляются ли монстры на земле города.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[player] t toggle mobs'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  topen:
+    material: OAK_DOOR
+    slot: 41
+    display_name: '&x&f&f&f&f&f&f&lО&x&f&a&f&a&f&a&lт&x&f&6&f&6&f&6&lк&x&f&2&f&2&f&2&lр&x&e&d&e&d&e&d&lы&x&e&8&e&8&e&8&lт&x&e&4&e&4&e&4&lы&x&b&4&b&4&b&4&lй &x&a&6&a&6&a&6&lг&x&9&f&9&f&9&f&lо&x&9&8&9&8&9&8&lр&x&9&1&9&1&9&1&lо&x&8&a&8&a&8&a&lд'
+    lore:
+    - '&7Любой желающий вступает сам: /t join.'
+    - '&7Выключено — только по приглашению.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[player] t toggle open'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  tpub:
+    material: BELL
+    slot: 42
+    display_name: '&x&f&f&f&f&f&f&lГ&x&f&b&f&b&f&b&lо&x&f&7&f&7&f&7&lс&x&f&3&f&3&f&3&lт&x&f&0&f&0&f&0&lе&x&e&c&e&c&e&c&lв&x&e&8&e&8&e&8&lо&x&e&4&e&4&e&4&lй &x&a&f&a&f&a&f&lт&x&a&a&a&a&a&a&lе&x&a&4&a&4&a&4&lл&x&9&f&9&f&9&f&lе&x&9&a&9&a&9&a&lп&x&9&4&9&4&9&4&lо&x&8&f&8&f&8&f&lр&x&8&a&8&a&8&a&lт'
+    lore:
+    - '&7Разрешает чужакам телепортироваться'
+    - '&7на главную точку города.'
+    - ''
+    - '&8Доступно мэру и помощникам города'
+    - ''
+    - '&6» &7ЛКМ &8— &fвключить / выключить'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+        r1:
+          type: regex matches
+          input: '%townyadvanced_player_status%'
+          regex: ^(Mayor|King)$
+    left_click_commands:
+    - '[player] t toggle public'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  nation:
+    material: WHITE_BANNER
+    slot: 46
+    display_name: '&x&c&6&e&e&f&f&lС&x&8&e&d&a&f&b&lт&x&5&5&c&5&f&7&lр&x&3&b&8&2&f&6&lа&x&5&2&6&7&e&b&lн&x&6&a&4&c&e&0&lа'
+    lore:
+    - '&7Объединение городов.'
+    - ''
+    - '&6» &7ЛКМ &8— &fоткрыть'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[openguimenu] strana'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  plot:
+    material: OAK_SIGN
+    slot: 47
+    display_name: '&x&f&f&f&1&c&1&lУ&x&f&f&d&a&7&a&lч&x&f&f&c&2&3&3&lа&x&f&f&8&a&1&e&lс&x&f&7&7&1&2&2&lт&x&f&0&5&9&2&6&lо&x&e&8&4&0&2&a&lк'
+    lore:
+    - '&7Купить, продать, права.'
+    - ''
+    - '&6» &7ЛКМ &8— &fоткрыть'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[openguimenu] uchastok'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  leave:
+    material: OAK_DOOR
+    slot: 52
+    display_name: '&x&f&f&c&9&b&8&lП&x&f&f&b&a&a&7&lо&x&f&f&a&b&9&5&lк&x&f&f&9&c&8&4&lи&x&f&f&8&e&7&3&lн&x&f&f&7&f&6&1&lу&x&f&f&7&0&5&0&lт&x&e&8&2&8&3&c&lь &x&c&a&2&0&3&8&lг&x&b&b&1&c&3&6&lо&x&a&c&1&8&3&4&lр&x&9&d&1&4&3&2&lо&x&8&e&1&0&3&0&lд'
+    lore:
+    - '&7Ты выходишь из города и теряешь его защиту.'
+    - '&7Мэр должен сначала передать город другому.'
+    - ''
+    - '&6» &7ЛКМ &8— &fуйти из города'
+    view_requirement:
+      requirements:
+        r0:
+          type: string equals
+          input: '%townyadvanced_has_town%'
+          output: 'true'
+    left_click_commands:
+    - '[player] t leave'
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  info0:
+    material: BOOK
+    slot: 4
+    display_name: '&x&d&4&f&8&b&0&lУ &x&b&c&f&2&a&3&lт&x&b&0&e&f&9&c&lе&x&a&4&e&c&9&6&lб&x&9&8&e&a&8&f&lя &x&7&f&e&4&8&2&lп&x&7&3&e&1&7&b&lо&x&6&7&d&e&7&5&lк&x&5&b&d&b&6&e&lа &x&1&c&a&e&8&b&lн&x&1&a&a&8&8&b&lе&x&1&8&a&2&8&a&lт &x&1&6&9&8&8&9&lг&x&1&4&9&2&8&8&lо&x&1&2&8&c&8&8&lр&x&1&1&8&7&8&7&lо&x&1&0&8&2&8&7&lд&x&0&e&7&c&8&6&lа'
+    lore:
+    - '&7Создай свой город или вступи в чужой.'
+    - '&7Название города будет и названием твоей страны.'
+    priority: 2
+    item_flags:
+    - HIDE_ATTRIBUTES
+  back:
+    material: ARROW
+    slot: 45
+    display_name: '&x&f&f&f&f&f&f&lН&x&e&4&e&4&e&4&lа&x&b&4&b&4&b&4&lз&x&9&f&9&f&9&f&lа&x&8&a&8&a&8&a&lд'
+    lore:
+    - '&7Вернуться в главное меню.'
+    left_click_commands:
+    - '[openguimenu] menu'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  close:
+    material: BARRIER
+    slot: 49
+    display_name: '&x&f&f&c&9&b&8&lЗ&x&f&f&9&c&8&4&lа&x&f&f&7&0&5&0&lк&x&e&8&2&8&3&c&lр&x&c&a&2&0&3&8&lы&x&a&c&1&8&3&4&lт&x&8&e&1&0&3&0&lь'
+    lore:
+    - '&7Закрыть это окно.'
+    left_click_commands:
+    - '[close]'
+    item_flags:
+    - HIDE_ATTRIBUTES
+  _fon:
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 15
+    - 16
+    - 17
+    - 18
+    - 25
+    - 26
+    - 27
+    - 34
+    - 35
+    - 36
+    - 43
+    - 44
+    - 48
+    - 50
+    - 51
+    - 53
+    priority: 9
+    item_flags:
+    - HIDE_ATTRIBUTES

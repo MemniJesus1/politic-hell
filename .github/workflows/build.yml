@@ -1,0 +1,44 @@
+name: Автосборка PoliticHell
+
+on:
+  push:
+    branches: [main, master]
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Забрать код
+        uses: actions/checkout@v4
+
+      - name: Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Сборка Engine (меню/арсенал/ящики/штаб)
+        run: mvn -B -f engine/pom.xml -DskipTests package
+
+      - name: Сборка HUD (деньги/статусы, Фаза 0)
+        run: mvn -B -f hud/pom.xml -DskipTests package
+
+      - name: Артефакты (скачать во вкладке Actions)
+        uses: actions/upload-artifact@v4
+        with:
+          name: politic-hell-jars
+          path: |
+            engine/target/PoliticHellEngine-*.jar
+            hud/target/PoliticHellHUD.jar
+
+      - name: GitHub Release (только по тегу v...)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            engine/target/PoliticHellEngine-*.jar
+            hud/target/PoliticHellHUD.jar
