@@ -1,33 +1,88 @@
-name: AcoreZero — автопродление
+name: AcoreZero autorenew
 
 on:
   schedule:
-    - cron: '0 */10 * * *'   # каждые 10 часов (запас к лимиту 16ч)
+    # every 6h: renew window opens 8h before the 16h deadline,
+    # so a 6h cadence can never miss the window
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
   renew:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Renew (если секреты добавлены)
+      - name: Renew (restore-if-suspended)
         env:
-          ACORE_RENEW_URL: ${{ secrets.ACORE_RENEW_URL }}
           ACORE_TOKEN: ${{ secrets.ACORE_TOKEN }}
+          ACORE_SERVER_ID: ${{ secrets.ACORE_SERVER_ID }}
         run: |
-          if [ -z "$ACORE_RENEW_URL" ] || [ -z "$ACORE_TOKEN" ]; then
-            echo "::warning:: Секреты ACORE_RENEW_URL / ACORE_TOKEN не заданы — пропуск."
-            echo "Как только выясним их API: repo Settings → Secrets and variables → Actions → добавь оба."
+          set -u
+          TOKEN="$ACORE_TOKEN"
+          SID="$ACORE_SERVER_ID"
+          if [ -z "$TOKEN" ] || [ -z "$SID" ]; then
+            echo "::warning::Missing ACORE_TOKEN / ACORE_SERVER_ID secrets."
             exit 0
           fi
-          echo "Отправляю продление..."
-          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST \
-            -H "Authorization: Bearer $ACORE_TOKEN" \
-            -H "Accept: application/json" \
-            "$ACORE_RENEW_URL")
-          echo "HTTP $code"
-          case "$code" in
-            200|201|204) echo "Продление ОК";;
-            *) echo "::error:: Продление не прошло (HTTP $code) — задача падает, чтобы заметить."; exit 1;;
-          esac
+          BASE="https://dash.acorehosting.com"
+          UA="PoliticHell-AutoRenew/1.1"
+          BODY="{\"server\":\"$SID\"}"
+          EXT="/api/client/extensions/dev.sqidgeon.serverplans"
+
+          state=$(curl -s -H "Authorization: Bearer $TOKEN" -H "Accept: application/json" \
+            "$BASE$EXT/mine?server=$SID" | grep -o '"state":"[a-z_]*"' | head -1 | cut -d'"' -f4) || state="unknown"
+          echo "mine state: $state"
+
+          if [ "$state" = "suspended" ]; then
+            echo "SUSPENDED -> restore loop"
+            restored=0
+            for i in 1 2 3 4 5 6 7 8 9 10; do
+              out=$(curl -s -w "|%{http_code}" -X POST \
+                -H "Authorization: Bearer $TOKEN" -H "Accept: application/json" \
+                -H "Content-Type: application/json" -d "$BODY" "$BASE$EXT/restore")
+              code=${out##*|}
+              echo "restore try $i: HTTP $code ${out%|*}"
+              if [ "$code" -ge 200 ] && [ "$code" -lt 300 ]; then restored=1; break; fi
+              if ! echo "$out" | grep -q "unavailable or full"; then break; fi
+              sleep 60
+            done
+            if [ "$restored" -ne 1 ]; then
+              echo "::error::Restore (unsuspend) failed - node may be full. Manual click needed."
+              exit 1
+            fi
+            echo "Restore accepted; waiting 90s";
+            sleep 90
+          fi
+
+          renewed=0
+          for i in 1 2 3; do
+            out=$(curl -s -w "|%{http_code}" -X POST \
+              -H "Authorization: Bearer $TOKEN" -H "Accept: application/json" \
+              -H "Content-Type: application/json" -d "$BODY" "$BASE$EXT/renew")
+            code=${out##*|}
+            echo "renew try $i: HTTP $code ${out%|*}"
+            if [ "$code" -ge 200 ] && [ "$code" -lt 300 ]; then renewed=1; break; fi
+            if echo "$out" | grep -q "less than 8 hours remain"; then
+              echo "Not due yet (>8h remain) - ok"
+              renewed=2
+              break
+            fi
+            if echo "$out" | grep -q "Unsuspend\\|suspension"; then
+              out2=$(curl -s -w "|%{http_code}" -X POST \
+                -H "Authorization: Bearer $TOKEN" -H "Accept: application/json" \
+                -H "Content-Type: application/json" -d "$BODY" "$BASE$EXT/restore")
+              echo "restore extra: ${out2##*|} ${out2%|*}"
+              if [ "${out2##*|}" -ge 200 ] && [ "${out2##*|}" -lt 300 ]; then sleep 90; continue; fi
+              exit 1
+            fi
+            sleep 20
+          done
+
+          if [ "$renewed" = "0" ]; then
+            echo "::error::Renew failed - check the log above."
+            exit 1
+          fi
+
+          st=$(curl -s -H "Authorization: Bearer $TOKEN" -H "Accept: application/json" \
+            "$BASE$EXT/mine?server=$SID")
+          echo "final mine: $st"
